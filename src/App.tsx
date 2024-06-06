@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/globalStyle.css';
 
 import AppRoutes from './Router';
-import Navigation from './Components/Header/index.tsx';
+import Navigation from './Components/index.tsx';
 
 export default function App(): JSX.Element {
     return (
