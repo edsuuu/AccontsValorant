@@ -2,7 +2,7 @@ export default function Home() {
     return (
         <>
             <div>
-                <h1>Acconts Valorant</h1>
+                <h1>Login</h1>
             </div>
         </>
     );
