@@ -15,11 +15,13 @@ export default function Perfil() {
      const id = useSelector((state) => state.auth.user.id);
      const nomeStorage = useSelector((state) => state.auth.user.nome);
      const emailStorage = useSelector((state) => state.auth.user.email);
+     const loginStorage = useSelector((state) => state.auth.user.login);
      const navigate = useNavigate();
      const dispatch = useDispatch();
 
      const [nome, setNome] = useState("");
      const [email, setEmail] = useState("");
+     const [login, setLogin] = useState("");
      const [password, setPassword] = useState("");
      const [dialogOpen, setDialogOpen] = useState(false);
      const [isLoading, setIsLoading] = useState(false);
@@ -31,11 +33,12 @@ export default function Perfil() {
                return toast.error("Você não está logado");
           }
 
-          if (nomeStorage && emailStorage) {
+          if (nomeStorage && emailStorage && loginStorage) {
                setNome(nomeStorage);
                setEmail(emailStorage);
+               setLogin(loginStorage);
           }
-     }, [id, emailStorage, nomeStorage, navigate, dispatch]);
+     }, [id, emailStorage, nomeStorage, loginStorage, navigate, dispatch]);
 
      function handleSubmit(e) {
           e.preventDefault();
@@ -50,6 +53,11 @@ export default function Perfil() {
           if (!isEmail(email)) {
                formErrors = true;
                toast.error("Email inválido");
+          }
+
+          if (login.length < 3 || login.length > 50) {
+               formErrors = true;
+               toast.error("Login precisa ter entre 3 e 50 caracteres ");
           }
 
           if (!id && (password.length < 6 || password.length > 50)) {
@@ -111,6 +119,8 @@ export default function Perfil() {
 
      return (
           <Container>
+                    <h1>Criar uma pagina visualizacao de perfil e deixar essa como edição</h1>
+
                <Loading isLoading={isLoading} />
 
                {dialogOpen && (
@@ -156,6 +166,15 @@ export default function Perfil() {
                                    value={email}
                                    onChange={(e) => setEmail(e.target.value)}
                                    placeholder="Digite seu novo E-mail"
+                              />
+                         </label>
+                         <label htmlFor="login">
+                              Seu login
+                              <input
+                                   type="text"
+                                   value={login}
+                                   onChange={(e) => setLogin(e.target.value)}
+                                   placeholder="Digite seu novo Login"
                               />
                          </label>
                          <label htmlFor="password">

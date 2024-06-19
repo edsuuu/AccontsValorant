@@ -6,11 +6,8 @@ export const Nav = styled.nav`
      align-items: center;
      padding: 10px;
      background-color: #5365a1;
-     /* border-bottom: 4px solid black; */
      box-shadow: 0px 2px 4px rgb(15, 4, 4);
-     position: fixed;
-     top: 0;
-     left: 0;
+
      width: 100%;
 
      a {

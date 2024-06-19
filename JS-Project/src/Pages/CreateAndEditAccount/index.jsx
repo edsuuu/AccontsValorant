@@ -127,12 +127,6 @@ export default function CreateAndEditAccount() {
                <Form onSubmit={handleSubmit}>
                     <Title>{id ? "Editar Cohta" : "Nova Conta"}</Title>
 
-                    {id && (
-                         <ProfilePicture>
-                              {<FaUserCircle size={150} />}
-                         </ProfilePicture>
-                    )}
-
                     <label name="nome">
                          Dono da conta
                          <input

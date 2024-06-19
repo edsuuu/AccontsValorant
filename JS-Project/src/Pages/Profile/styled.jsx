@@ -38,7 +38,6 @@ export const Form = styled.form`
      label {
           margin-top: 10px;
           padding: 5px;
-          color: #000000;
           font-size: 1.2rem;
           font-family: "Roboto", sans-serif;
           font-weight: bold;
@@ -56,13 +55,13 @@ export const Form = styled.form`
           font-size: 1.2rem;
           border: 0.5px solid #000000bd;
           &:focus {
-               border: 1px solid #00ffb3;
+               border: 1px solid #001aff;
                outline: none;
           }
      }
 `;
 export const Conteudo = styled.div`
-     background-color: #4e4e4e;
+     background-color: #bdbdbd;
      box-shadow: 4px 7px 15px #000000ac;
      border: 0.1px solid #00000029;
      border-radius: 10px;
@@ -82,7 +81,7 @@ export const Title = styled.div`
      a {
           font-size: 1.2rem;
           font-weight: bold;
-          color: #ff0000;
+          color: #4400ff;
           text-decoration: none;
           transition: 0.3s;
      }

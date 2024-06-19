@@ -1,21 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-     margin: auto;
-     margin-top: 80px;
-     height: 91.7vh;
-     padding: 20px;
      display: flex;
-     flex-direction: row;
-     justify-content: space-around;
-     align-items: center;
-     flex-wrap: wrap;
-     background-color: #2c2c2c;
+     justify-content: center;
+     padding: 20px;
 `;
 
 export const Title = styled.h1`
      text-align: center;
-     padding: 20px;
      font-size: 3rem;
 `;
 
@@ -36,14 +28,13 @@ export const Button = styled.button`
 `;
 
 export const Form = styled.form`
-     width: 500px;
-     height: auto;
+     width: 600px;
      display: flex;
      flex-direction: column;
      align-items: center;
      border-radius: 10px;
      gap: 40px;
-     padding: 80px 0px;
+     padding: 30px;
      label {
           margin-top: 10px;
           padding: 5px;
@@ -65,7 +56,7 @@ export const Form = styled.form`
           font-size: 1.2rem;
           border: 0.5px solid #000000bd;
           &:focus {
-               border: 1px solid #00ffb3;
+               border: 1px solid #4400ff;
                outline: none;
           }
      }
