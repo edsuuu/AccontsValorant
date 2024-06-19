@@ -10,8 +10,6 @@ export default createGlobalStyle`
      }
 
      body {
-          background-color: #111111;
-
           .Toastify {
                font-family: 'Roboto', sans-serif;
                div {
@@ -25,4 +23,3 @@ export default createGlobalStyle`
      }
 
 `;
-
