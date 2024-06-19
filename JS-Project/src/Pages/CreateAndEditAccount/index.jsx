@@ -15,13 +15,10 @@ import { FaEdit, FaUserCircle } from "react-icons/fa";
 
 export default function CreateAndEditAccount() {
      const { id } = useParams();
-     const [foto, setFoto] = useState("");
-     const [nome, setNome] = useState("");
-     const [sobrenome, setSobrenome] = useState("");
-     const [email, setEmail] = useState("");
-     const [idade, setIdade] = useState("");
-     const [peso, setPeso] = useState("");
-     const [altura, setAltura] = useState("");
+     const [dono_conta, setDonoConta] = useState("");
+     const [login_conta, setLoginConta] = useState("");
+     const [senha_conta, setSenhaConta] = useState("");
+
      const [isLoading, setIsLoading] = useState(false);
      const navigate = useNavigate();
      const dispatch = useDispatch();
@@ -34,11 +31,11 @@ export default function CreateAndEditAccount() {
                     setIsLoading(true);
                     //pesquisar um usuario
                     const { data } = await axios.get(`/contas/${id}`);
+                    setDonoConta(data.dono_conta);
+                    setLoginConta(data.login_conta);
+                    setSenhaConta(data.senha_conta);
 
-                    setNome(data.nome);
-                    setSobrenome(data.sobrenome);
-                    setEmail(data.email);
-
+                    // console.log('vindo do data ', data);
                     setIsLoading(false);
                } catch (err) {
                     setIsLoading(false);
@@ -59,20 +56,18 @@ export default function CreateAndEditAccount() {
           e.preventDefault();
           let formErros = false;
 
-          if (nome.length < 3 || nome.length > 255) {
-               toast.error("Nome precisa ter entre 3 e 255 caracteres ");
+          if (dono_conta.length < 3 || dono_conta.length > 255) {
+               toast.error("Dono da conta precisa ter entre 3 e 255 caracteres ");
                formErros = true;
           }
-          if (sobrenome.length < 3 || sobrenome.length > 255) {
-               toast.error("Sobrenome precisa ter entre 3 e 255 caracteres ");
+          if (login_conta.length < 3 || login_conta.length > 255) {
+               toast.error("Login da conta precisa ter entre 3 e 255 caracteres ");
                formErros = true;
           }
-
-          if (!isEmail(email)) {
-               toast.error("Email inválido");
+          if (senha_conta.length < 3 || senha_conta.length > 255) {
+               toast.error("Senha da conta precisa ter entre 3 e 255 caracteres ");
                formErros = true;
           }
-
 
           if (formErros) return;
 
@@ -82,9 +77,9 @@ export default function CreateAndEditAccount() {
 
                     //editar
                     await axios.put(`/contas/${id}`, {
-                         nome,
-                         sobrenome,
-                         email,
+                         dono_conta,
+                         login_conta,
+                         senha_conta,
                     });
                     toast.success("Conta editada com sucesso");
                     setIsLoading(false);
@@ -94,10 +89,10 @@ export default function CreateAndEditAccount() {
                     setIsLoading(true);
 
                     //criar conta
-                    await axios.post(`/contas/create/`, {
-                         nome,
-                         sobrenome,
-                         email,
+                    await axios.post(`/contas/`, {
+                         dono_conta,
+                         login_conta,
+                         senha_conta,
                     });
 
                     navigate("/contas");
@@ -105,6 +100,7 @@ export default function CreateAndEditAccount() {
                     setIsLoading(false);
                }
           } catch (err) {
+               console.log(err);
                setIsLoading(false);
 
                const status = get(err, "response.status", 0);
@@ -127,33 +123,33 @@ export default function CreateAndEditAccount() {
                <Form onSubmit={handleSubmit}>
                     <Title>{id ? "Editar Cohta" : "Nova Conta"}</Title>
 
-                    <label name="nome">
+                    <label name="dono_conta">
                          Dono da conta
                          <input
                               type="text"
-                              value={nome}
-                              onChange={(e) => setNome(e.target.value)}
+                              value={dono_conta}
+                              onChange={(e) => setDonoConta(e.target.value)}
                               placeholder="Dono da conta"
                          />
                     </label>
 
-                    <label name="sobrenome">
+                    <label name="login_conta">
                          login da conta
                          <input
                               type="text"
-                              value={sobrenome}
-                              onChange={(e) => setSobrenome(e.target.value)}
-                              placeholder="login da conta"
+                              value={login_conta}
+                              onChange={(e) => setLoginConta(e.target.value)}
+                              placeholder="Login da conta"
                          />
                     </label>
 
-                    <label name="email">
+                    <label name="senha_conta">
                          senha da conta
                          <input
                               type="text"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              placeholder="senha da conta"
+                              value={senha_conta}
+                              onChange={(e) => setSenhaConta(e.target.value)}
+                              placeholder="Senha da conta"
                          />
                     </label>
 

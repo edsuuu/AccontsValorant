@@ -101,7 +101,7 @@ export default function Contas() {
 
                <ContaContainer>
                     {contas.map((contas, index) => (
-                         <Profile id={contas.id} key={index}>
+                         <Profile id={contas._id} key={index}>
                               {<FaUserCircle size={50} cursor="normal" />}
                               <div>
                                    <h4>Dono da Conta</h4>
@@ -117,11 +117,10 @@ export default function Contas() {
                                    <h4>Senha da conta</h4>
                                    <span>{contas.senha_conta}</span>
                               </div>
-
                               <Botoes>
                                    <Link
                                         className="editar"
-                                        to={`/conta/${contas.id}/edit`}
+                                        to={`/conta/${contas._id}/edit`}
                                    >
                                         <FaEdit size={30} />
                                    </Link>
@@ -129,14 +128,14 @@ export default function Contas() {
                                    <Link
                                         className="deletar"
                                         onClick={handleDeleteAsk}
-                                        to={`/contas/${contas.id}/delete`}
+                                        to={`/contas/${contas._id}/delete`}
                                    >
                                         <FaWindowClose size={30} />
                                    </Link>
 
                                    <FaExclamation
                                         onClick={(e) =>
-                                             handleDelete(e, contas.id, index)
+                                             handleDelete(e, contas._id, index)
                                         }
                                         size={30}
                                         display="none"

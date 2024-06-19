@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 
 const Navigation = () => {
      const { user, isLoggedIn } = useSelector((state) => state.auth);
-
+     // console.log('vindo do navi', user);
      const navigate = useNavigate();
      const dispatch = useDispatch();
 
@@ -34,12 +34,11 @@ const Navigation = () => {
                icon: <FaUserAlt />,
                hidden: isLoggedIn,
           },
-          // {
-          //      name: "Registre-se",
-          //      to: "/register",
-          //      icon: <IoNewspaper size={18} />,
-          //      hidden: isLoggedIn,
-          // },
+          {
+               name: "Admin Painel",
+               to: "/admin",
+               hidden: isLoggedIn,
+          },
           {
                name: "Contas",
                to: "/contas",
@@ -73,9 +72,11 @@ const Navigation = () => {
                                    </li>
                               )
                     )}
+                    {user.permission === 'admin' && <Link to='/admin'>Painel Admin</Link>}
                </Lista>
 
                <Sair>
+
                     {isLoggedIn && (
                          <Link onClick={handleLogout}>
                               <FaSignInAlt />
