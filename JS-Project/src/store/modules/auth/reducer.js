@@ -10,7 +10,6 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
      switch (action.type) {
           case types.LOGIN_REQUEST_SUCCESS: {
-               console.log(action.payload);
                const newState = { ...state };
                newState.isLoggedIn = true;
                newState.token = action.payload.token;

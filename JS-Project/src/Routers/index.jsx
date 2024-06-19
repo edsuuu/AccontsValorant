@@ -8,9 +8,10 @@ import Redirect from "../Pages/Redirect";
 import Pagina404 from "../Pages/NotFoundPage";
 import PrivateRoute from "./PrivateRoute";
 import Contas from "../Pages/Contas";
-import CreateAndEditAccount from "../Pages/CreateAndEditAccount";
+import CreateAndEditAccount from "../Pages/Contas/CreateAndEditAccount";
 import AdminPanel from "../Pages/Admin";
 import Unauthorized from "../Pages/Unauthorized";
+import EditAndDeleteProfile from "../Pages/Profile/EditAndDeleteProfile";
 
 export function AppRoutes() {
      return (
@@ -49,6 +50,14 @@ export function AppRoutes() {
                     element={
                          <PrivateRoute isClosed={true}>
                               {() => <Perfil />}
+                         </PrivateRoute>
+                    }
+               />
+               <Route
+                    path="/perfil-edit"
+                    element={
+                         <PrivateRoute isClosed={true}>
+                              {() => <EditAndDeleteProfile />}
                          </PrivateRoute>
                     }
                />

@@ -26,7 +26,6 @@ export default function Contas() {
                try {
                     setIsLoading(true);
                     const response = await axios.get("/contas");
-                    console.log(response.data);
                     setContas(response.data);
                     setIsLoading(false);
                } catch (e) {
