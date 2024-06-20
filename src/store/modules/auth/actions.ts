@@ -1,0 +1,82 @@
+import * as types from '../types';
+
+// Definição dos tipos de payload
+interface LoginRequestPayload {
+    email: string;
+    password: string;
+}
+
+interface LoginSuccessPayload {
+    token: string;
+    user: {
+        id: string;
+        name: string;
+        email: string;
+        permission: string;
+    };
+}
+
+interface LoginFailurePayload {
+    error: string;
+}
+
+interface UpdateRequestPayload {
+    id: string;
+    nome: string;
+    email: string;
+    password?: string;
+}
+
+interface UpdateSuccessPayload {}
+
+interface UpdateFailurePayload {
+    error: string;
+}
+
+// Definição dos tipos das ações
+interface Action<T> {
+    type: string;
+    payload: T;
+}
+
+export function loginRequest(payload: LoginRequestPayload): Action<LoginRequestPayload> {
+    return {
+        type: types.LOGIN_REQUEST_REQUEST,
+        payload,
+    };
+}
+
+export function loginSuccess(payload: LoginSuccessPayload): Action<LoginSuccessPayload> {
+    return {
+        type: types.LOGIN_REQUEST_SUCCESS,
+        payload,
+    };
+}
+
+export function loginFailure(payload: LoginFailurePayload): Action<LoginFailurePayload> {
+    return {
+        type: types.LOGIN_REQUEST_FAILURE,
+        payload,
+    };
+}
+
+export function updateRequest(payload: UpdateRequestPayload): Action<UpdateRequestPayload> {
+    return {
+        type: types.PROFILE_UPDATE_REQUEST,
+        payload,
+    };
+}
+
+export function updateSuccess(payload: UpdateSuccessPayload = {}): Action<UpdateSuccessPayload> {
+    return {
+        type: types.PROFILE_UPDATE_SUCCESS,
+        payload,
+    };
+}
+
+export function updateFailure(payload: UpdateFailurePayload): Action<UpdateFailurePayload> {
+    return {
+        type: types.PROFILE_UPDATE_FAILURE,
+        payload,
+    };
+}
