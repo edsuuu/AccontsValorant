@@ -2,8 +2,9 @@ import * as types from '../types';
 
 // Definição dos tipos de payload
 interface LoginRequestPayload {
-    email: string;
+    login: string; 
     password: string;
+    prevPath: string;
 }
 
 interface LoginSuccessPayload {
@@ -34,11 +35,12 @@ interface UpdateFailurePayload {
 }
 
 // Definição dos tipos das ações
-interface Action<T> {
+interface Action<T = any> {
     type: string;
-    payload: T;
+    payload?: T;
 }
 
+// Ações para login
 export function loginRequest(payload: LoginRequestPayload): Action<LoginRequestPayload> {
     return {
         type: types.LOGIN_REQUEST_REQUEST,
@@ -60,6 +62,7 @@ export function loginFailure(payload: LoginFailurePayload): Action<LoginFailureP
     };
 }
 
+// Ações para atualização de perfil
 export function updateRequest(payload: UpdateRequestPayload): Action<UpdateRequestPayload> {
     return {
         type: types.PROFILE_UPDATE_REQUEST,

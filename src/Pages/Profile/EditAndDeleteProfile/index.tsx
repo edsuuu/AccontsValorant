@@ -1,198 +1,185 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { Button, Container, Form, Conteudo, Title, Alerta } from "./styled";
-import { isEmail } from "validator";
-import Loading from "../../../Components/Loading";
-import * as actions from "../../../store/modules/auth/actions";
-import { Link, useNavigate } from "react-router-dom";
-import { get } from "lodash";
-import axios from "../../../services/axios";
+import React, { useEffect, useState, FormEvent } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Button, Container, Form, Conteudo, Title, Alerta } from './styled';
+import { isEmail } from 'validator';
+import Loading from '../../../Components/Loading';
+import * as actions from '../../../store/modules/auth/actions';
+import { Link, useNavigate } from 'react-router-dom';
+import { get } from 'lodash';
+import axios from '../../../services/axios';
+import { RootState } from '../../../store/modules/rootReducer';
+import { AppDispatch } from '../../../store';
 
-export default function EditAndDeleteProfile() {
-     const user = useSelector((state) => state.auth.token);
+const EditAndDeleteProfile: React.FC = () => {
+    const user = useSelector((state: RootState) => state.auth.token);
+    const id = useSelector((state: RootState) => state.auth.user.id);
+    const nomeStorage = useSelector((state: RootState) => state.auth.user.name);
+    const loginStorage = useSelector((state: RootState) => state.auth.user.login);
+    const emailStorage = useSelector((state: RootState) => state.auth.user.email);
+    const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
 
-     const id = useSelector((state) => state.auth.user.id);
-     const nomeStorage = useSelector((state) => state.auth.user.nome);
-     const emailStorage = useSelector((state) => state.auth.user.email);
-     const loginStorage = useSelector((state) => state.auth.user.login);
-     const navigate = useNavigate();
-     const dispatch = useDispatch();
+    const [nome, setNome] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [login, setLogin] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-     const [nome, setNome] = useState("");
-     const [email, setEmail] = useState("");
-     const [login, setLogin] = useState("");
-     const [password, setPassword] = useState("");
-     const [dialogOpen, setDialogOpen] = useState(false);
-     const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+        if (!id) {
+            dispatch(actions.loginFailure({ error: 'Você não está logado' }));
+            navigate('/login');
+            return toast.error('Você não está logado');
+        }
 
-     useEffect(() => {
-          if (!id) {
-               dispatch(actions.loginFailure());
-               navigate("/login");
-               return toast.error("Você não está logado");
-          }
+        if (nomeStorage && emailStorage && loginStorage) {
+            setNome(nomeStorage);
+            setEmail(emailStorage);
+            setLogin(loginStorage);
+        }
+    }, [id, emailStorage, nomeStorage, loginStorage, navigate, dispatch]);
 
-          if (nomeStorage && emailStorage && loginStorage) {
-               setNome(nomeStorage);
-               setEmail(emailStorage);
-               setLogin(loginStorage);
-          }
-     }, [id, emailStorage, nomeStorage, loginStorage, navigate, dispatch]);
+    function handleSubmit(e: FormEvent) {
+        e.preventDefault();
 
-     function handleSubmit(e) {
-          e.preventDefault();
+        let formErrors = false;
 
-          let formErrors = false;
+        if (nome.length < 3 || nome.length > 255) {
+            formErrors = true;
+            toast.error('Nome precisa ter entre 3 e 255 caracteres ');
+        }
 
-          if (nome.length < 3 || nome.length > 255) {
-               formErrors = true;
-               toast.error("Nome precisa ter entre 3 e 255 caracteres ");
-          }
+        if (!isEmail(email)) {
+            formErrors = true;
+            toast.error('Email inválido');
+        }
 
-          if (!isEmail(email)) {
-               formErrors = true;
-               toast.error("Email inválido");
-          }
+        if (login.length < 3 || login.length > 50) {
+            formErrors = true;
+            toast.error('Login precisa ter entre 3 e 50 caracteres ');
+        }
 
-          if (login.length < 3 || login.length > 50) {
-               formErrors = true;
-               toast.error("Login precisa ter entre 3 e 50 caracteres ");
-          }
+        if (!id && (password.length < 6 || password.length > 50)) {
+            formErrors = true;
+            toast.error('A senha precisa ter entre 6 a 50 caracteres');
+        }
 
-          if (!id && (password.length < 6 || password.length > 50)) {
-               formErrors = true;
-               toast.error("A senha precisa ter entre 6 a 50 caracteres");
-          }
+        if (formErrors) return;
 
-          if (formErrors) return;
+        dispatch(actions.updateRequest({ nome, email, password, id }));
+    }
 
-          dispatch(actions.updateRequest({ nome, email, password, id }));
-     }
+    const abrirDialog = () => {
+        setDialogOpen(true);
+    };
 
-     const abrirDialog = () => {
-          setDialogOpen(true);
-     };
+    const fecharDialog = () => {
+        setDialogOpen(false);
+    };
 
-     const fecharDialog = () => {
-          setDialogOpen(false);
-     };
+    const excluirConta = async () => {
+        try {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${user}`,
+                },
+            };
 
-     const excluirConta = async () => {
-          try {
-               // setIsLoading(true);
+            await axios.delete(`/users`, config);
 
-               const config = {
-                    headers: {
-                         Authorization: `Bearer ${user}`,
-                    },
-               };
+            dispatch(actions.loginFailure({ error: 'Conta excluída com sucesso' }));
 
-               await axios.delete(`/users`, config);
+            toast.success('Conta excluída com sucesso');
+            setDialogOpen(false);
+        } catch (err) {
+            setDialogOpen(false);
+            setIsLoading(false);
 
+            const status = get(err, 'response.status', 0) as number;
+            const errors = get(err, 'response.data.errors', 'Erro Status 500') as unknown as string[];
 
+            if (status === 401) {
+                toast.error('Usuário não existe');
+                return dispatch(actions.loginFailure({ error: 'Usuário não existe' }));
+            }
 
-               dispatch(actions.loginFailure());
+            errors.map((error) => toast.error(error));
+        }
+    };
 
-               toast.success("Conta excluída com sucesso");
-               setDialogOpen(false);
-               // setIsLoading(false);
-          } catch (err) {
-               setDialogOpen(false);
-               setIsLoading(false);
+    return (
+        <Container>
+            <h1>Criar uma página visualização de perfil e deixar essa como edição</h1>
 
-               const status = get(err, "response.status", 0);
-               const errors = get(
-                    err,
-                    "response.data.errors",
-                    "Erro Status 500"
-               );
+            <Loading isLoading={isLoading} />
 
-               if (status === 401) {
-                    toast.error("Usuário não existe")
-                    return dispatch(actions.loginFailure());
-               };
+            {dialogOpen && (
+                <Alerta>
+                    <p>Deseja mesmo excluir sua conta?</p>
 
-               errors.map((error) => toast.error(error));
-          }
-     };
+                    <div>
+                        <button className="cancelar" onClick={fecharDialog}>
+                            Fechar
+                        </button>
+                        <button className="excluir" onClick={excluirConta}>
+                            Excluir
+                        </button>
+                    </div>
+                </Alerta>
+            )}
 
-     return (
-          <Container>
-                    <h1>Criar uma pagina visualizacao de perfil e deixar essa como edição</h1>
+            <Conteudo>
+                <Title>
+                    <h1>Edite a sua conta</h1>
+                    <Link to={''} onClick={abrirDialog}>Apagar minha conta</Link>
+                </Title>
+                <Form onSubmit={handleSubmit}>
+                    <label htmlFor="nome">
+                        Seu Nome
+                        <input
+                            type="text"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                            placeholder="Digite seu novo Nome"
+                        />
+                    </label>
+                    <label htmlFor="email">
+                        Seu E-mail
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Digite seu novo E-mail"
+                        />
+                    </label>
+                    <label htmlFor="login">
+                        Seu login
+                        <input
+                            type="text"
+                            value={login}
+                            onChange={(e) => setLogin(e.target.value)}
+                            placeholder="Digite seu novo Login"
+                        />
+                    </label>
+                    <label htmlFor="password">
+                        Alterar a sua Senha <br />
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Digite sua nova Senha"
+                        />
+                        <small>
+                            Ao alterar a senha, você precisa fazer login novamente *
+                        </small>
+                    </label>
+                    <Button type="submit">Editar minha conta</Button>
+                </Form>
+            </Conteudo>
+        </Container>
+    );
+};
 
-               <Loading isLoading={isLoading} />
-
-               {dialogOpen && (
-                    <Alerta>
-                         <p>Deseja mesmo excluir sua conta?</p>
-
-                         <div>
-                              <button
-                                   className="cancelar"
-                                   onClick={fecharDialog}
-                              >
-                                   Fechar
-                              </button>
-                              <button
-                                   className="excluir"
-                                   onClick={excluirConta}
-                              >
-                                   Excluir
-                              </button>
-                         </div>
-                    </Alerta>
-               )}
-
-               <Conteudo>
-                    <Title>
-                         <h1>Edite a sua conta</h1>
-                         <Link onClick={abrirDialog}>Apagar minha conta</Link>
-                    </Title>
-                    <Form onSubmit={handleSubmit}>
-                         <label htmlFor="nome">
-                              Seu Nome
-                              <input
-                                   type="text"
-                                   value={nome}
-                                   onChange={(e) => setNome(e.target.value)}
-                                   placeholder="Digite seu novo Nome"
-                              />
-                         </label>
-                         <label htmlFor="email">
-                              Seu E-mail
-                              <input
-                                   type="text"
-                                   value={email}
-                                   onChange={(e) => setEmail(e.target.value)}
-                                   placeholder="Digite seu novo E-mail"
-                              />
-                         </label>
-                         <label htmlFor="login">
-                              Seu login
-                              <input
-                                   type="text"
-                                   value={login}
-                                   onChange={(e) => setLogin(e.target.value)}
-                                   placeholder="Digite seu novo Login"
-                              />
-                         </label>
-                         <label htmlFor="password">
-                              Alterar a sua Senha <br />
-                              <input
-                                   type="password"
-                                   value={password}
-                                   onChange={(e) => setPassword(e.target.value)}
-                                   placeholder="Digite sua nova Senha"
-                              />
-                              <small>
-                                   Ao alterar a senha, você precisa fazer login
-                                   novamente *
-                              </small>
-                         </label>
-                         <Button type="submit">Editar minha conta</Button>
-                    </Form>
-               </Conteudo>
-          </Container>
-     );
-}
+export default EditAndDeleteProfile;

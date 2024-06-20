@@ -1,54 +1,53 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { Container, Form, Title, Button, Conteudo } from "./styled";
-import { isEmail } from "validator";
-import { toast } from "react-toastify";
-import axios from "../../../services/axios";
-import { get } from "lodash";
-import { useNavigate } from "react-router-dom";
-import Loading from "../../../Components/Loading";
+import React, { useState, FormEvent } from 'react';
+import { Container, Form, Button, Conteudo } from './styled';
+import { isEmail } from 'validator';
+import { toast } from 'react-toastify';
+import axios from '../../../services/axios';
+import { get } from 'lodash';
+import { useNavigate } from 'react-router-dom';
+import Loading from '../../../Components/Loading';
 
-export default function Register() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+const Register: React.FC = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [nome, setNome] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault();
 
         let formErros = false;
 
         if (nome.length < 3 || nome.length > 255) {
             formErros = true;
-            toast.error("Nome precisa ter entre 3 e 255 caracteres ");
+            toast.error('Nome precisa ter entre 3 e 255 caracteres ');
         }
 
         if (!isEmail(email)) {
             formErros = true;
-            toast.error("Email inválido");
+            toast.error('Email inválido');
         }
 
         if (password.length < 6 || password.length > 50) {
             formErros = true;
-            toast.error("A senha precisa ter entre 6 a 50 caracteres");
+            toast.error('A senha precisa ter entre 6 a 50 caracteres');
         }
 
         if (formErros) return;
         setIsLoading(true);
         try {
-            await axios.post("/users/", {
+            await axios.post('/users/', {
                 nome,
                 email,
                 password,
             });
-            toast.success("Usuário criado com sucesso");
+            toast.success('Usuário criado com sucesso');
             setIsLoading(false);
 
-            navigate("/login");
+            navigate('/login');
         } catch (err) {
-            const errors = get(err, "response.data.errors", []);
+            const errors = get(err, 'response.data.errors', []) as string[];
             errors.map((error) => toast.error(error));
             setIsLoading(false);
         }
@@ -61,8 +60,8 @@ export default function Register() {
                 <Form onSubmit={handleSubmit}>
                     <h1>Cadastrar novo usuario para o sistema</h1>
 
-                    <label name="nome">
-                        Digite seu Nome { }
+                    <label htmlFor="nome">
+                        Digite seu Nome
                         <input
                             type="text"
                             value={nome}
@@ -70,7 +69,7 @@ export default function Register() {
                             placeholder="Digite seu Nome"
                         />
                     </label>
-                    <label name="email">
+                    <label htmlFor="email">
                         Digite seu E-mail
                         <input
                             type="text"
@@ -79,7 +78,7 @@ export default function Register() {
                             placeholder="Digite seu Email"
                         />
                     </label>
-                    <label name="password">
+                    <label htmlFor="password">
                         Digite sua Senha
                         <input
                             type="password"
@@ -93,4 +92,6 @@ export default function Register() {
             </Conteudo>
         </Container>
     );
-}
+};
+
+export default Register;

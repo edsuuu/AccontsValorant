@@ -8,7 +8,7 @@ import axios from '../../services/axios';
 import * as actions from '../../store/modules/auth/actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store';  // Importe o tipo AppDispatch
+import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
 
 // Definindo a interface para a conta
@@ -23,12 +23,12 @@ const Contas: React.FC = () => {
     const [contas, setContas] = useState<Conta[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();  // Tipar o dispatch
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
         async function getContas() {
             try {
-                // setIsLoading(true);
+                setIsLoading(true);
                 const response = await axios.get('/contas');
                 setContas(response.data);
                 setIsLoading(false);

@@ -1,41 +1,38 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Container, Form, Title, Button, Conteudo } from "./styled";
-import { toast } from "react-toastify";
-import { get } from "lodash";
-import Loading from "../../Components/Loading";
+import React, { useState, useEffect, FormEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Container, Form, Title, Button, Conteudo } from './styled';
+import { toast } from 'react-toastify';
+import { get } from 'lodash';
+import Loading from '../../Components/Loading';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../store/modules/auth/actions';
+import { RootState } from '../../store/modules/rootReducer';
+import { AppDispatch } from '../../store'; 
 
-import { useDispatch, useSelector } from "react-redux";
-
-import * as actions from "../../store/modules/auth/actions";
-
-export default function Login() {
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+const Login: React.FC = () => {
+    const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+    const isLoading = useSelector((state: RootState) => state.auth.isLoading);
     const navigate = useNavigate();
-
     const location = useLocation();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
-    const prevPath = get(location, "state.PrevPath", "/");
+    const prevPath = get(location, 'state.prevPath', '/');
 
-    const isLoading = useSelector((state) => state.auth.isLoading);
+    const [login, setLogin] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
-    const [login, setLogin] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         let formErrors = false;
 
         if (login.length < 3 || login.length > 10) {
             formErrors = true;
-            toast.error("Login inválid0");
+            toast.error('Login inválido');
         }
 
         if (password.length < 6 || password.length > 50) {
             formErrors = true;
-            toast.error("Senha inválida");
+            toast.error('Senha inválida');
         }
 
         if (formErrors) return;
@@ -45,7 +42,7 @@ export default function Login() {
 
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/contas");
+            navigate('/contas');
         }
     }, [isLoggedIn, navigate]);
 
@@ -54,8 +51,8 @@ export default function Login() {
             <Loading isLoading={isLoading} />
             <Conteudo>
                 <Form onSubmit={handleSubmit}>
-                    <Title>Pagina Login</Title>
-                    <label name="login">
+                    <Title>Página Login</Title>
+                    <label htmlFor="login">
                         Digite seu Login
                         <input
                             type="text"
@@ -64,7 +61,7 @@ export default function Login() {
                             placeholder="Digite seu Login"
                         />
                     </label>
-                    <label name="password">
+                    <label htmlFor="password">
                         Digite a sua Senha
                         <input
                             type="password"
@@ -78,4 +75,6 @@ export default function Login() {
             </Conteudo>
         </Container>
     );
-}
+};
+
+export default Login;

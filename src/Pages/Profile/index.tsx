@@ -1,9 +1,14 @@
-export default function Profile() {
- return (
-   <div>
-          <h1>Seu perfil</h1>
+import React from 'react';
 
-          <h1>editar perfil <a href="/perfil-edit">editar</a></h1>
-   </div>
- );
-}
+const Profile: React.FC = () => {
+    return (
+        <div>
+            <h1>Seu perfil</h1>
+            <h1>
+                Editar perfil <a href="/perfil-edit">editar</a>
+            </h1>
+        </div>
+    );
+};
+
+export default Profile;
