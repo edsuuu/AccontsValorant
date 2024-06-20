@@ -12,11 +12,7 @@
 
 [Backend Repository](https://github.com/edsuuu/api_contas_valorant)
 
-# Donwload repository with submodules
-```bash
-git clone --recurse-submodules https://github.com/joaosouzaa01/AccontsValorant.git
-```
-# Donwload repository without submodules
+# Donwload repository 
 ```bash
 git clone https://github.com/joaosouzaa01/AccontsValorant.git
 ```
