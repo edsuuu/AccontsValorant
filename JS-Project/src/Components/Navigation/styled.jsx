@@ -29,7 +29,6 @@ export const Nav = styled.nav`
 `;
 
 export const Lista = styled.ul`
-     margin: 0px 150px 0px 0px;
      display: flex;
      align-items: center;
      justify-content: space-between;
