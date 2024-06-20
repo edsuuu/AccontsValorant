@@ -7,4 +7,16 @@
 - User normal - atualizar conta
 - Deletar Conta
 - Pagina de perfil
--
+
+## Backend Repository
+
+[Backend Repository](https://github.com/edsuuu/api_contas_valorant)
+
+# Donwload repository with submodules
+```bash
+git clone --recurse-submodules https://github.com/joaosouzaa01/AccontsValorant.git
+```
+# Donwload repository without submodules
+```bash
+git clone https://github.com/joaosouzaa01/AccontsValorant.git
+```
