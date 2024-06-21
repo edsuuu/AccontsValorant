@@ -1,13 +1,13 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Form, Title, Button, Conteudo } from './styled';
+import { Container, Title } from './styled';
 import { toast } from 'react-toastify';
 import { get } from 'lodash';
 import Loading from '../../Components/Loading';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/modules/auth/actions';
 import { RootState } from '../../store/modules/rootReducer';
-import { AppDispatch } from '../../store'; 
+import { AppDispatch } from '../../store';
 
 const Login: React.FC = () => {
     const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
@@ -48,7 +48,38 @@ const Login: React.FC = () => {
 
     return (
         <Container>
-            <Loading isLoading={isLoading} />
+            <div>
+            <form action="#">
+                <h1>Entre na sua conta!</h1>
+                <div className="social-container">
+                    <a href="#" className="social">
+                        <i className="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" className="social">
+                        <i className="fab fa-google-plus-g"></i>
+                    </a>
+                    <a href="#" className="social">
+                        <i className="fab fa-linkedin-in"></i>
+                    </a>
+                    Name
+                </div>
+                <span>ou use seu e-mail para cadastro</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+                </form>
+            </div>
+            <div className='overlay'>
+                <div className='overlay-panel' >
+                    <h1>Bem vindo de volta!</h1>
+
+                </div>
+
+            </div>
+
+
+            {/* <Loading isLoading={isLoading} />
             <Conteudo>
                 <Form onSubmit={handleSubmit}>
                     <Title>Página Login</Title>
@@ -72,7 +103,7 @@ const Login: React.FC = () => {
                     </label>
                     <Button type="submit">Entrar</Button>
                 </Form>
-            </Conteudo>
+            </Conteudo> */}
         </Container>
     );
 };
