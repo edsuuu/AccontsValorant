@@ -1,13 +1,16 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Button, Container, Conteudo, Title, Form } from './styled';
+import { Container } from './styled';
 import { toast } from 'react-toastify';
 import { get } from 'lodash';
-import Loading from '../../Components/Loading';
+// import Loading from '../../Components/Loading';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/modules/auth/actions';
 import { RootState } from '../../store/modules/rootReducer';
 import { AppDispatch } from '../../store';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Login: React.FC = () => {
     const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
@@ -48,50 +51,69 @@ const Login: React.FC = () => {
 
     return (
         <Container>
-            {/* <div>
-            <form action="#">
-                <h1>Entre na sua conta!</h1>
-                <div className="social-container">
-                    <a href="#" className="social">
-                        <i className="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" className="social">
-                        <i className="fab fa-google-plus-g"></i>
-                    </a>
-                    <a href="#" className="social">
-                        <i className="fab fa-linkedin-in"></i>
-                    </a>
+            <div className="container" id="container">
+                <div className="form-container sign-up-container">
+                    <form action="#">
+                        <h1>Crie sua conta!</h1>
+                        <div className="social-container">
+                            <a href="#" className="social"><FaFacebook /><i className="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" className="social"><FcGoogle />
+                                <i className="fab fa-google-plus-g">
+                                </i>
+                            </a>
+                            <a href="#" className="social"><FaLinkedin />
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <span>ou use seu e-mail para cadastro</span>
+                        <input type="text" placeholder="Nome" />
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Senha" />
+                        <button>Sign Up</button>
+                    </form>
                 </div>
-                <span>ou use seu e-mail para cadastro</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
-                </form>
+                <div className="form-container sign-in-container">
+                    <form action="#">
+                        <h1>Entre</h1>
+                        <div className="social-container">
+                        <a href="#" className="social"><FaFacebook />
+                                <i className="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" className="social"><FcGoogle />
+                                <i className="fab fa-google-plus-g">
+                                </i>
+                            </a>
+                            <a href="#" className="social"><FaLinkedin />
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <span> ou use sua conta</span>
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Senha" />
+                        <a href="#">Esqueceu a senha?</a>
+                        <button>Entrar</button>
+                    </form>
+                </div>
+                <div className="overlay-container">
+                    <div className="overlay">
+                        <div className="overlay-panel overlay-left">
+                            <h1>Bem vindo de volta!</h1>
+                            <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
+                            <button className="ghost" id="signIn">
+                                Sign In
+                            </button>
+                        </div>
+                        <div className="overlay-panel overlay-right">
+                            <h1>Hello, Amigo!</h1>
+                            <p>Einsira seus dados pessoais e comece a jornada conosco</p>
+                            <button className="ghost" id="signUp">
+                                Entrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className='overlay'>
-                <div className='overlay-panel' >
-                    <h1>Bem vindo de volta!</h1>
-
-                </div>
-
-            </div> */}
-
-            <Loading isLoading={isLoading} />
-            <Conteudo>
-                <Form onSubmit={handleSubmit}>
-                    <Title>Página Login</Title>
-                    <label htmlFor="login">
-                        Digite seu Login
-                        <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} placeholder="Digite seu Login" />
-                    </label>
-                    <label htmlFor="password">
-                        Digite a sua Senha
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Digite a sua Senha" />
-                    </label>
-                    <Button type="submit">Entrar</Button>
-                </Form>
-            </Conteudo>
         </Container>
     );
 };
