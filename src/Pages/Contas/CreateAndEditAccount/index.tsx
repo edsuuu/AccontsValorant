@@ -117,7 +117,7 @@ export default function CreateAndEditAccount() {
             <Loading isLoading={isLoading} />
 
             <Form onSubmit={handleSubmit}>
-                <Title>{id ? "Editar Cohta" : "Nova Conta"}</Title>
+                <Title>{id ? "Editar Conta" : "Nova Conta"}</Title>
 
                 <label htmlFor="dono_conta">
                     Dono da conta
