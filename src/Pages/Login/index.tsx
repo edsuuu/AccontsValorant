@@ -48,7 +48,7 @@ const Login: React.FC = () => {
 
     return (
         <Container>
-            <div>
+            {/* <div>
             <form action="#">
                 <h1>Entre na sua conta!</h1>
                 <div className="social-container">
@@ -75,10 +75,10 @@ const Login: React.FC = () => {
 
                 </div>
 
-            </div>
+            </div> */}
 
 
-            {/* <Loading isLoading={isLoading} />
+            <Loading isLoading={isLoading} />
             <Conteudo>
                 <Form onSubmit={handleSubmit}>
                     <Title>Página Login</Title>
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
                     </label>
                     <Button type="submit">Entrar</Button>
                 </Form>
-            </Conteudo> */}
+            </Conteudo>
         </Container>
     );
 };
