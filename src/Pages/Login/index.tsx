@@ -61,7 +61,6 @@ const Login: React.FC = () => {
                     <a href="#" className="social">
                         <i className="fab fa-linkedin-in"></i>
                     </a>
-                    Name
                 </div>
                 <span>ou use seu e-mail para cadastro</span>
                 <input type="email" placeholder="Email" />
