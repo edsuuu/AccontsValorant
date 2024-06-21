@@ -4,6 +4,12 @@ export const Container = styled.div`
      display: flex;
      justify-content: center;
      padding: 20px;
+
+     .div_Log {
+
+     }
+
+
 `;
 
 export const Title = styled.h1`
