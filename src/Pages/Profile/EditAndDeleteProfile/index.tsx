@@ -133,47 +133,27 @@ const EditAndDeleteProfile: React.FC = () => {
             <Conteudo>
                 <Title>
                     <h1>Edite a sua conta</h1>
-                    <Link to={''} onClick={abrirDialog}>Apagar minha conta</Link>
+                    <Link to={''} onClick={abrirDialog}>
+                        Apagar minha conta
+                    </Link>
                 </Title>
                 <Form onSubmit={handleSubmit}>
                     <label htmlFor="nome">
                         Seu Nome
-                        <input
-                            type="text"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                            placeholder="Digite seu novo Nome"
-                        />
+                        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu novo Nome" />
                     </label>
                     <label htmlFor="email">
                         Seu E-mail
-                        <input
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Digite seu novo E-mail"
-                        />
+                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Digite seu novo E-mail" />
                     </label>
                     <label htmlFor="login">
                         Seu login
-                        <input
-                            type="text"
-                            value={login}
-                            onChange={(e) => setLogin(e.target.value)}
-                            placeholder="Digite seu novo Login"
-                        />
+                        <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} placeholder="Digite seu novo Login" />
                     </label>
                     <label htmlFor="password">
                         Alterar a sua Senha <br />
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Digite sua nova Senha"
-                        />
-                        <small>
-                            Ao alterar a senha, você precisa fazer login novamente *
-                        </small>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Digite sua nova Senha" />
+                        <small>Ao alterar a senha, você precisa fazer login novamente *</small>
                     </label>
                     <Button type="submit">Editar minha conta</Button>
                 </Form>

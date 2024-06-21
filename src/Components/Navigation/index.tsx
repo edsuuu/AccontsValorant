@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FaHome, FaSignInAlt, FaUserAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { Nav, Lista, Icon, Title, Sair } from './styled';
@@ -6,8 +7,9 @@ import * as actions from '../../store/modules/auth/actions';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AppDispatch } from '../../store';
+import React from 'react';
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
     const { user, isLoggedIn } = useSelector((state: any) => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
     background-color: #d1d1d1;
@@ -10,7 +10,6 @@ export const Container = styled.div`
     margin: 110px auto 10px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #000000;
-
 `;
 export const Title = styled.div`
     margin: 20px 0px 0px 0px;
@@ -64,10 +63,7 @@ export const Profile = styled.div`
         height: 50px;
         border-radius: 50%;
     }
-
 `;
-
-
 
 export const Botoes = styled.div`
     display: flex;
@@ -76,39 +72,33 @@ export const Botoes = styled.div`
     justify-content: center;
     gap: 20px;
     a {
-
         color: #000;
-
     }
-    .perfil{
+    .perfil {
         transition: 0.3s;
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
         }
-
     }
-    .editar{
+    .editar {
         transition: 0.3s;
         &:hover {
             color: #00d1d8;
         }
-
     }
 
-    .deletar{
+    .deletar {
         transition: 0.3s;
         &:hover {
             color: red;
         }
-
     }
-    .deletarWarn{
+    .deletarWarn {
         transition: 0.3s;
         &:hover {
             color: #ffc400;
         }
-
     }
 `;

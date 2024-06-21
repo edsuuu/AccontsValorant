@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Title } from './styled';
+import { Button, Container, Conteudo, Title, Form } from './styled';
 import { toast } from 'react-toastify';
 import { get } from 'lodash';
 import Loading from '../../Components/Loading';
@@ -77,28 +77,17 @@ const Login: React.FC = () => {
 
             </div> */}
 
-
             <Loading isLoading={isLoading} />
             <Conteudo>
                 <Form onSubmit={handleSubmit}>
                     <Title>Página Login</Title>
                     <label htmlFor="login">
                         Digite seu Login
-                        <input
-                            type="text"
-                            value={login}
-                            onChange={(e) => setLogin(e.target.value)}
-                            placeholder="Digite seu Login"
-                        />
+                        <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} placeholder="Digite seu Login" />
                     </label>
                     <label htmlFor="password">
                         Digite a sua Senha
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Digite a sua Senha"
-                        />
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Digite a sua Senha" />
                     </label>
                     <Button type="submit">Entrar</Button>
                 </Form>

@@ -10,8 +10,9 @@ import AdminPanel from '../Pages/Admin';
 import Unauthorized from '../Pages/Unauthorized';
 import EditAndDeleteProfile from '../Pages/Profile/EditAndDeleteProfile';
 import Pagina404 from '../Pages/NotFoundPage';
+import React from 'react';
 
-export function AppRoutes() {
+const AppRoutes: React.FC = () => {
     return (
         <>
             <Routes>
@@ -72,6 +73,6 @@ export function AppRoutes() {
             </Routes>
         </>
     );
-}
+};
 
 export default AppRoutes;

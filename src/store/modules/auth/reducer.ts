@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { AnyAction } from 'redux';
 import * as types from '../types';
 

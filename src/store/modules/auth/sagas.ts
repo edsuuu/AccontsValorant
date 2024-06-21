@@ -49,6 +49,7 @@ function* loginRequest({ payload }: LoginRequestAction) {
     }
 }
 
+// eslint-disable-next-line require-yield
 function* persistRehydrate({ payload }: PersistRehydrateAction) {
     const token = get(payload, 'auth.token');
     if (!token) return;
@@ -95,9 +96,5 @@ function* watchUpdateProfileRequest() {
 }
 
 export default function* authSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
-    yield all([
-        fork(watchLoginRequest),
-        fork(watchPersistRehydrate),
-        fork(watchUpdateProfileRequest),
-    ]);
+    yield all([fork(watchLoginRequest), fork(watchPersistRehydrate), fork(watchUpdateProfileRequest)]);
 }

@@ -10,10 +10,7 @@ import { AnyAction } from 'redux';
 
 const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
-const store: Store<RootState, AnyAction> = createStore(
-    persistedReducers(rootReducer),
-    applyMiddleware(sagaMiddleware)
-);
+const store: Store<RootState, AnyAction> = createStore(persistedReducers(rootReducer), applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 

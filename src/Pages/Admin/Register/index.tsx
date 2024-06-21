@@ -62,30 +62,15 @@ const Register: React.FC = () => {
 
                     <label htmlFor="nome">
                         Digite seu Nome
-                        <input
-                            type="text"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                            placeholder="Digite seu Nome"
-                        />
+                        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite seu Nome" />
                     </label>
                     <label htmlFor="email">
                         Digite seu E-mail
-                        <input
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Digite seu Email"
-                        />
+                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Digite seu Email" />
                     </label>
                     <label htmlFor="password">
                         Digite sua Senha
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Digite sua Senha"
-                        />
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Digite sua Senha" />
                     </label>
                     <Button type="submit">Criar minha conta</Button>
                 </Form>

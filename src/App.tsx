@@ -8,8 +8,9 @@ import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 import store, { persistor } from './store';
 import { GlobalStyled } from './styles/GlobalStyled';
+import React from 'react';
 
-export default function App(): JSX.Element {
+const App: React.FC = () => {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
@@ -22,4 +23,6 @@ export default function App(): JSX.Element {
             </PersistGate>
         </Provider>
     );
-}
+};
+
+export default App;

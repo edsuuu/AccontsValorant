@@ -2,7 +2,7 @@ import * as types from '../types';
 
 // Definição dos tipos de payload
 interface LoginRequestPayload {
-    login: string; 
+    login: string;
     password: string;
     prevPath: string;
 }
@@ -35,6 +35,7 @@ interface UpdateFailurePayload {
 }
 
 // Definição dos tipos das ações
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface Action<T = any> {
     type: string;
     payload?: T;

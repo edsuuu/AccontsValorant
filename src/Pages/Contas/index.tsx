@@ -123,7 +123,13 @@ const Contas: React.FC = () => {
                                 <FaWindowClose size={30} />
                             </Link>
 
-                            <FaExclamation onClick={(e) => handleDelete(e, conta._id, index)} size={30} style={{ display: 'none' }} cursor="pointer" className="deletarWarn" />
+                            <FaExclamation
+                                onClick={(e) => handleDelete(e, conta._id, index)}
+                                size={30}
+                                style={{ display: 'none' }}
+                                cursor="pointer"
+                                className="deletarWarn"
+                            />
                         </Botoes>
                     </Profile>
                 ))}

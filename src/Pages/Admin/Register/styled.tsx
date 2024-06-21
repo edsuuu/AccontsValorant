@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Conteudo = styled.div`
     border-radius: 15px;
@@ -8,12 +8,12 @@ export const Conteudo = styled.div`
     gap: 50px;
 
     & h1 {
-    text-align: center;
-    font-size: 2rem;
-    padding: 0.3%;
-    margin-bottom: 20px;
+        text-align: center;
+        font-size: 2rem;
+        padding: 0.3%;
+        margin-bottom: 20px;
     }
-    `;
+`;
 
 export const Container = styled.div`
     margin: 30px auto;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     align-items: center;
     flex-wrap: wrap;
     background-color: #1d1d1d;
-    `;
+`;
 
 export const Button = styled.button`
     width: 50%;
@@ -41,7 +41,7 @@ export const Button = styled.button`
         background-color: #0400ff42;
         color: #ececec;
     }
-    `;
+`;
 
 export const Form = styled.form`
     margin-top: 40px;
@@ -53,29 +53,29 @@ export const Form = styled.form`
     border-radius: 10px;
     gap: 20px;
 
-label {
-    margin-top: 10px;
-    padding: 5px;
-    color: #000000;
-    font-size: 1.2rem;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 70%;
-    & .error {
-        border: 1px solid #ff00008d;
+    label {
+        margin-top: 10px;
+        padding: 5px;
+        color: #000000;
+        font-size: 1.2rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 70%;
+        & .error {
+            border: 1px solid #ff00008d;
+        }
     }
-}
-input {
-    padding: 10px 15px;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    border: 0.5px solid #000000bd;
-    &:focus {
-        border: 1px solid #00ffb3;
-        outline: none;
+    input {
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        border: 0.5px solid #000000bd;
+        &:focus {
+            border: 1px solid #00ffb3;
+            outline: none;
+        }
     }
-}
 `;
