@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom";
 import axios from "../../../services/axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { Container, Title } from "./styled";
 import { get } from "lodash";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import Loading from "../../../Components/Loading";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../store/modules/auth/actions";
+import { AppDispatch } from "../../../store";
 
 export default function CreateAndEditAccount() {
     const { id } = useParams();
@@ -19,7 +20,7 @@ export default function CreateAndEditAccount() {
 
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
         if (!id) return;
@@ -37,7 +38,7 @@ export default function CreateAndEditAccount() {
             } catch (err) {
                 setIsLoading(false);
 
-                const status = get(err, "response.status", 0);
+                const status = get(err, "response.status", 0) as number;
                 const errors = get(err, "response.data.error", []);
 
                 if (status === 400) {
@@ -49,7 +50,7 @@ export default function CreateAndEditAccount() {
         getConta();
     }, [id]);
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         let formErros = false;
 
@@ -99,7 +100,7 @@ export default function CreateAndEditAccount() {
         } catch (err) {
             setIsLoading(false);
 
-            const status = get(err, "response.status", 0);
+            const status = get(e, 'response.status', 0) as number;
             const errors = get(err, "response.data.errors", []);
 
             if (errors) {
@@ -108,7 +109,7 @@ export default function CreateAndEditAccount() {
                 toast.error("Erro desconhecido");
             }
 
-            if (status === 401) dispatch(actions.loginFailure());
+            if (status === 401) dispatch(actions.loginFailure({error: 'Unauthorized'}));
         }
     }
 
