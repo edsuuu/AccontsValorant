@@ -2,29 +2,17 @@ import styled from 'styled-components';
 
 export const Conteudo = styled.div`
     border-radius: 15px;
-    background-color: #8080804b;
     box-shadow: 4px 7px 15px #000000ac;
     padding: 40px;
-    gap: 50px;
-
-    & h1 {
-        text-align: center;
-        font-size: 2rem;
-        padding: 0.3%;
-        margin-bottom: 20px;
-    }
 `;
 
 export const Container = styled.div`
     margin: 30px auto;
-    height: 94vh;
     padding: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
-    background-color: #1d1d1d;
 `;
 
 export const Button = styled.button`
