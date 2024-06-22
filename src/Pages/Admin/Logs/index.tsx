@@ -1,4 +1,3 @@
-// src/components/LogsTable.tsx
 import React, { useEffect, useState } from 'react';
 import API_URL from '../../../services/axios';
 
@@ -15,20 +14,18 @@ const LogsTable: React.FC = () => {
     useEffect(() => {
         async function getLogs() {
             try {
-                const response = await API_URL.get('/admin/logs'); // Substitua 'API_URL' pela URL real da sua API
+                const response = await API_URL.get('/admin/logs');
                 const logsData = response.data;
                 console.log(logsData);
 
                 const formattedLogs: LogEntry[] = [];
 
-                // Processa cada entrada de log
                 logsData.forEach((logData: { content: string }) => {
                     const lines = logData.content.split('\n');
                     lines.forEach((line: string) => {
                         if (line.trim()) {
                             const parts = line.split(' ');
                             if (parts.length >= 4) {
-                                // Certifique-se de que há partes suficientes para processar
                                 const timestamp = new Date(parts[0]).toLocaleString();
                                 const level = parts[1].replace(':', '');
                                 const message = parts.slice(2, parts.length - 2).join(' ');
@@ -65,7 +62,7 @@ const LogsTable: React.FC = () => {
                         <tr key={index}>
                             <td>{log.timestamp}</td>
                             <td>{log.level}</td>
-                            <td>{log.message}</td>
+                            {/* <td>{log.message}</td> */}
                             <td>{log.ip}</td>
                         </tr>
                     ))}

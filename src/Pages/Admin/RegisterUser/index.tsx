@@ -31,9 +31,9 @@ const RegisterUser: React.FC = () => {
             toast.error('Email inválido');
         }
 
-        if (login.length < 6 || login.length > 50) {
+        if (login.length < 4 || login.length > 50) {
             formErros = true;
-            toast.error('O login precisa ter entre 6 a 50 caracteres');
+            toast.error('O login precisa ter entre 4 a 50 caracteres');
         }
 
         if (password.length < 6 || password.length > 50) {

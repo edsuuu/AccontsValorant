@@ -15,7 +15,6 @@ interface LocationState {
 
 const MyRoute: React.FC<MyRouteProps> = ({ children, isClosed = false, requiredPermission }) => {
     const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
-    //estado
     const state = useSelector((state: any) => state.auth);
     console.log(state);
 

@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './Router';
 import Navigation from './Components/Navigation';
 
-import { PersistGate } from 'redux-persist/integration/react'; // Caminho corrigido
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';

@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
 
-// Definindo a interface para a conta
 interface Conta {
     _id: string;
     dono_conta: string;

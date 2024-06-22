@@ -8,7 +8,6 @@ import axios from '../../../services/axios';
 import { get } from 'lodash';
 import { AxiosResponse } from 'axios';
 
-// Definição dos tipos de payload para as ações
 interface LoginRequestAction {
     type: typeof types.LOGIN_REQUEST_REQUEST;
     payload: {

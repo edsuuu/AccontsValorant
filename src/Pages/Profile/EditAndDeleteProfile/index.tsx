@@ -68,7 +68,7 @@ const EditAndDeleteProfile: React.FC = () => {
 
         if (formErrors) return;
 
-        dispatch(actions.updateRequest({ nome, email, password, id }));
+        dispatch(actions.updateRequest({ nome, email, password, _id }));
     }
 
     const abrirDialog = () => {

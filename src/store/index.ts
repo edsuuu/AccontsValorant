@@ -17,5 +17,4 @@ sagaMiddleware.run(rootSaga);
 export const persistor = persistStore(store);
 export default store;
 
-// Tipo Dispatch configurado para usar Thunk e Action
 export type AppDispatch = ThunkDispatch<RootState, void, AnyAction>;

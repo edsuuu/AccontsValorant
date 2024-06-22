@@ -17,9 +17,6 @@ const Admin: React.FC = () => {
             <div>
                 <Link to="/admin/users">Trazer todos usuarios</Link>
             </div>
-            <div>
-                <Link to="/admin/user/register">Cadastrar Novos Usuários</Link>
-            </div>
             <div>{/* <Link to="/admin/user/edit/:id">Edit</Link> */}</div>
         </Container>
     );
