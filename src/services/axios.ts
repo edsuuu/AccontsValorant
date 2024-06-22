@@ -6,9 +6,3 @@ const API_URL: AxiosInstance = axios.create({
 });
 
 export default API_URL;
-
-// import axios from 'axios';
-
-// export default axios.create({
-//      baseURL: process.env.REACT_APP_BASE_URL,
-// })

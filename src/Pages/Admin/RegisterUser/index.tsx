@@ -7,7 +7,7 @@ import { get } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading';
 
-const Register: React.FC = () => {
+const RegisterUser: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [nome, setNome] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -79,4 +79,4 @@ const Register: React.FC = () => {
     );
 };
 
-export default Register;
+export default RegisterUser;

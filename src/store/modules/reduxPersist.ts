@@ -3,7 +3,6 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, PersistConfig } from 'redux-persist';
 import { Reducer } from 'redux';
 
-// Defina o estado real do auth
 interface AuthState {
     isLoggedIn: boolean;
     token: string | null;
@@ -11,12 +10,10 @@ interface AuthState {
     isLoading: boolean;
 }
 
-// Defina a interface RootState
 interface RootState {
     auth: AuthState;
 }
 
-// Defina PersistedState como um union type de RootState e PersistPartial
 type PersistedState = {
     _persist: {
         version: number;
