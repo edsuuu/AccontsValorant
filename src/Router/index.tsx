@@ -11,6 +11,7 @@ import Unauthorized from '../Pages/Unauthorized';
 import EditAndDeleteProfile from '../Pages/Profile/EditAndDeleteProfile';
 import Pagina404 from '../Pages/NotFoundPage';
 import React from 'react';
+import LogsTable from '../Pages/Admin/Logs';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -65,6 +66,14 @@ const AppRoutes: React.FC = () => {
                     element={
                         <PrivateRoute isClosed={true} requiredPermission="admin">
                             <AdminPanel />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/admin/logs"
+                    element={
+                        <PrivateRoute isClosed={true} requiredPermission="admin">
+                            <LogsTable />
                         </PrivateRoute>
                     }
                 />
