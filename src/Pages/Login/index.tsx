@@ -113,7 +113,7 @@ const Login: React.FC = () => {
                         </div>
                         <div className="overlay-panel overlay-right">
                             <h1>Hello, Amigo!</h1>
-                            <p>Einsira seus dados pessoais e comece a jornada conosco</p>
+                            <p>Ensira seus dados pessoais e comece a jornada conosco</p>
                             <button className="ghost" id="signUp">
                                 Entrar
                             </button>
