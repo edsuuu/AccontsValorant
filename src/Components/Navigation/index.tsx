@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FaHome, FaSignInAlt, FaUserAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { Nav, Lista, Icon, Title, Sair } from './styled';
+import { Nav, Lista, Title } from './styled';
 import { Link } from 'react-router-dom';
 import * as actions from '../../store/modules/auth/actions';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +10,9 @@ import React from 'react';
 
 const Navigation: React.FC = () => {
     const { user, isLoggedIn } = useSelector((state: any) => state.auth);
+    const teste = useSelector((state: any) => console.log(state));
+    console.log(teste);
+
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
@@ -21,58 +23,65 @@ const Navigation: React.FC = () => {
         toast.info('Você fez Logout no Sistema', { theme: 'colored' });
     };
 
-    const rotas = [
-        { name: 'Home', to: '/', icon: <FaHome size={20} /> },
-
-        {
-            name: 'Login',
-            to: '/login',
-            icon: <FaUserAlt />,
-            hidden: isLoggedIn,
-        },
-
-        {
-            name: 'Contas',
-            to: '/contas',
-            icon: <FaUsers size={20} />,
-            hidden: !isLoggedIn,
-        },
-        {
-            name: 'Perfil',
-            to: '/perfil',
-            icon: <FaUser size={16} />,
-            hidden: !isLoggedIn,
-        },
-    ];
-
     return (
         <Nav>
-            <Title>{isLoggedIn && <h1>Bem vindo! {user.nome}</h1>}</Title>
+            <Title>{isLoggedIn && <h2>Bem vindo! {user.nome}</h2>}</Title>
 
             <Lista>
-                {rotas.map(
-                    (rota, index) =>
-                        // renderiza apenas a rota se não estiver marcada como oculta
-                        !rota.hidden && (
-                            <li key={index}>
-                                <Link to={rota.to}>
-                                    {rota.icon && <Icon>{rota.icon}</Icon>}
-                                    {rota.name}
-                                </Link>
-                            </li>
-                        ),
-                )}
-                {user.permission === 'admin' && <Link to="/admin">Painel Admin</Link>}
-            </Lista>
+                <li>
+                    <Link to={'/'}>Home</Link>
+                </li>
 
-            <Sair>
-                {isLoggedIn && (
-                    <Link to={''} onClick={handleLogout}>
-                        <FaSignInAlt />
-                        Sair
-                    </Link>
+                {isLoggedIn === false && (
+                    <li>
+                        <Link to={'/login'}>Login</Link>
+                    </li>
                 )}
-            </Sair>
+                {isLoggedIn === true && (
+                    <>
+                        <li>
+                            <Link to={'/contas'}>Contas Valorant</Link>
+                            <ul>
+                                <li>
+                                    <Link to={'/cadastrar-conta'}>Criar Nova Conta</Link>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <Link to={'/perfil'}>Meu Perfil</Link>
+                            <ul>
+                                <li>
+                                    <a href="#">Editar Perfil</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </>
+                )}
+
+                {user.permission === 'admin' && (
+                    <li>
+                        <Link to="/admin">Painel Admin</Link>
+                        <ul>
+                            <li>
+                                <a href="#">Criar User</a>
+                            </li>
+                            <li>
+                                <a href="#">Listar Users</a>
+                            </li>
+                            <li>
+                                <a href="#">Logs</a>
+                            </li>
+                        </ul>
+                    </li>
+                )}
+                {isLoggedIn && (
+                    <li>
+                        <Link to={''} onClick={handleLogout}>
+                            Sair da sua Conta
+                        </Link>
+                    </li>
+                )}
+            </Lista>
         </Nav>
     );
 };

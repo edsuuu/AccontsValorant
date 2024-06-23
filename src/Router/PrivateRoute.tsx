@@ -13,7 +13,7 @@ interface LocationState {
     prevPath: string;
 }
 
-const MyRoute: React.FC<MyRouteProps> = ({ children, isClosed = false, requiredPermission }) => {
+const PrivateRoute: React.FC<MyRouteProps> = ({ children, isClosed = false, requiredPermission }) => {
     const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
     const state = useSelector((state: any) => state.auth);
     console.log(state);
@@ -34,4 +34,4 @@ const MyRoute: React.FC<MyRouteProps> = ({ children, isClosed = false, requiredP
 
     return isLoggedIn ? <>{renderedChildren}</> : <Navigate to="/login" />;
 };
-export default MyRoute;
+export default PrivateRoute;
