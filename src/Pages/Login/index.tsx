@@ -108,7 +108,7 @@ const Login: React.FC = () => {
                             <h1>Bem vindo de volta!</h1>
                             <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
                             <button className="ghost" id="signIn">
-                                Sign In
+                                Entre
                             </button>
                         </div>
                         <div className="overlay-panel overlay-right">
