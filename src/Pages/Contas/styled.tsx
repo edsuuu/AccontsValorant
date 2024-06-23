@@ -10,6 +10,11 @@ export const Container = styled.div`
     margin: 110px auto 10px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #000000;
+    .Card-Acconts-map {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 20px;
+    }
 `;
 export const Title = styled.div`
     margin: 20px 0px 0px 0px;
