@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
+import CardAcconts from '../../Components/CardAcconts';
 
 interface Conta {
     _id: string;
@@ -27,7 +28,7 @@ const Contas: React.FC = () => {
     useEffect(() => {
         async function getContas() {
             try {
-                setIsLoading(true);
+                // setIsLoading(true);
                 const response = await axios.get('/contas');
                 setContas(response.data);
                 setIsLoading(false);
@@ -87,10 +88,7 @@ const Contas: React.FC = () => {
         }
     };
 
-    const copyToClipboard = (text: string) => {
-        navigator.clipboard.writeText(text);
-        toast.success('Copiado para a área de transferência');
-    };
+
     return (
         <Container>
             <Loading isLoading={isLoading} />
@@ -100,52 +98,32 @@ const Contas: React.FC = () => {
                     <FaEdit /> Criar nova Conta
                 </Link>
             </Title>
-
-            <ContaContainer>
+            <div className='Card-Acconts-map'>
                 {contas.map((conta, index) => (
-                    <Profile id={conta._id} key={conta._id}>
-                        <FaUserCircle size={50} cursor="normal" />
-                        <div>
-                            <h4>Dono da Conta</h4>
-                            <span>
-                                {conta.dono_conta}
-                                <button onClick={() => copyToClipboard(conta.dono_conta)}>Copiar</button>
-                            </span>
-                        </div>
-                        <div>
-                            <h4>Login da conta</h4>
-                            <span>
-                                {conta.login_conta}
-                                <button onClick={() => copyToClipboard(conta.login_conta)}>Copiar</button>
-                            </span>
-                        </div>
-                        <div>
-                            <h4>Senha da conta</h4>
-                            <span>
-                                {conta.senha_conta}
-                                <button onClick={() => copyToClipboard(conta.senha_conta)}>Copiar</button>
-                            </span>
-                        </div>
-                        <Botoes>
-                            <Link className="editar" to={`/conta/${conta._id}/edit`}>
-                                <FaEdit size={30} />
-                            </Link>
+                    <>
+                        <CardAcconts key={index} nome={conta.dono_conta} login={conta.login_conta} senha={conta.senha_conta} />
+                        {/* <Botoes>
+                        <Link className="editar" to={`/conta/${conta._id}/edit`}>
+                            <FaEdit size={30} />
+                        </Link>
+                        <Link className="deletar" onClick={handleDeleteAsk} to={`/contas/${conta._id}/delete`}>
+                            <FaWindowClose size={30} />
+                        </Link>
+                        <FaExclamation
+                            onClick={(e) => handleDelete(e, conta._id, index)}
+                            size={30}
+                            style={{ display: 'none' }}
+                            cursor="pointer"
+                            className="deletarWarn"
+                        />
+                        </Botoes> */}
+                    </>
+            ))}
 
-                            <Link className="deletar" onClick={handleDeleteAsk} to={`/contas/${conta._id}/delete`}>
-                                <FaWindowClose size={30} />
-                            </Link>
 
-                            <FaExclamation
-                                onClick={(e) => handleDelete(e, conta._id, index)}
-                                size={30}
-                                style={{ display: 'none' }}
-                                cursor="pointer"
-                                className="deletarWarn"
-                            />
-                        </Botoes>
-                    </Profile>
-                ))}
-            </ContaContainer>
+            </div>
+
+
         </Container>
     );
 };
