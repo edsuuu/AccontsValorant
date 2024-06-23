@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store, { persistor } from './store';
 import { GlobalStyled } from './styles/GlobalStyled';
 import React from 'react';
+import CardComponent from './Components/CardAcconts';
 
 const App: React.FC = () => {
     return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
                 <Router>
                     <Navigation />
                     <AppRoutes />
+                    <CardComponent></CardComponent>
                     <ToastContainer autoClose={3000} className="toast-container" />
                     <GlobalStyled />
                 </Router>
