@@ -51,7 +51,7 @@ const Navigation: React.FC = () => {
                             <Link to={'/perfil'}>Meu Perfil</Link>
                             <ul>
                                 <li>
-                                    <a href="#">Editar Perfil</a>
+                                    <Link to={'/perfil-edit'}>Editar Perfil</Link>
                                 </li>
                             </ul>
                         </li>
@@ -63,13 +63,13 @@ const Navigation: React.FC = () => {
                         <Link to="/admin">Painel Admin</Link>
                         <ul>
                             <li>
-                                <a href="#">Criar User</a>
+                                <Link to={'/admin/user/register'}>Criar User</Link>
                             </li>
                             <li>
-                                <a href="#">Listar Users</a>
+                                <Link to={'/admin/users'}>Listar Users</Link>
                             </li>
                             <li>
-                                <a href="#">Logs</a>
+                                <Link to={'/admin/logs'}>Logs</Link>
                             </li>
                         </ul>
                     </li>
