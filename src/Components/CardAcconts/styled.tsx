@@ -17,7 +17,6 @@ export const DadosContas = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-
 `;
 export const UserIcon = styled.div`
     background-color: #565656;
@@ -26,12 +25,43 @@ export const UserIcon = styled.div`
     height: 50px;
     border-radius: 10px;
 `;
-export const Nome = styled.div`
+export const NomeDoDono = styled.div``;
+export const Login = styled.div``;
+export const Senha = styled.div``;
+export const Botoes = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    a {
+        color: #000;
+    }
+    .perfil {
+        transition: 0.3s;
+        text-decoration: none;
 
-`;
-export const Login = styled.div`
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .editar {
+        transition: 0.3s;
+        &:hover {
+            color: #00d1d8;
+        }
+    }
 
-`;
-export const Senha = styled.div`
-
+    .deletar {
+        transition: 0.3s;
+        &:hover {
+            color: red;
+        }
+    }
+    .deletarWarn {
+        transition: 0.3s;
+        &:hover {
+            color: #ffc400;
+        }
+    }
 `;

@@ -1,36 +1,47 @@
 import React from 'react';
-import { Container, Content, DadosContas, Login, Nome, Senha, UserIcon } from './styled';
+import { Botoes, Container, Content, DadosContas, Login, NomeDoDono, Senha, UserIcon } from './styled';
 import { toast } from 'react-toastify';
-interface CardAccontsprops {
-    nome: string;
+import { Link } from 'react-router-dom';
+import { FaEdit, FaExclamation, FaWindowClose } from 'react-icons/fa';
+interface CardAccontsProps {
+    _id: string;
+    nomeDoDono: string;
     login: string;
     senha: string;
+    onClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+    onClickDelete: (e: React.MouseEvent<SVGElement, MouseEvent>) => void;
 }
 
-const copyToClipboard = (text: string) => {
+const copyToClipboard = (text: string, nameItem: string) => {
     navigator.clipboard.writeText(text);
-    toast.success('Copiado para a área de transferência');
+    toast.success(`${nameItem} foi Copiado para a área de transferência`);
 };
 
-const CardAcconts: React.FC<CardAccontsprops> = ({ nome, login, senha}) => {
+const CardAcconts: React.FC<CardAccontsProps> = ({ nomeDoDono, login, senha, _id, onClick, onClickDelete }) => {
     return (
         <Container>
             <Content>
                 <UserIcon></UserIcon>
                 <DadosContas>
-                    <Nome>
-                        {nome}
-                        <button onClick={() => copyToClipboard(nome)}>Copiar</button>
-                    </Nome>
+                    <NomeDoDono>{nomeDoDono}</NomeDoDono>
                     <Login>
                         {login}
-                        <button onClick={() => copyToClipboard(login)}>Copiar</button>
+                        <button onClick={() => copyToClipboard(login, 'Login')}>Copiar</button>
                     </Login>
                     <Senha>
                         {senha}
-                        <button onClick={() => copyToClipboard(senha)}>Copiar</button>
+                        <button onClick={() => copyToClipboard(senha, 'Senha')}>Copiar</button>
                     </Senha>
                 </DadosContas>
+                <Botoes>
+                    <Link className="editar" to={`/conta/edit/${_id}`}>
+                        <FaEdit size={30} />
+                    </Link>
+                    <Link className="deletar" onClick={onClick} to={''}>
+                        <FaWindowClose size={30} />
+                    </Link>
+                    <FaExclamation onClick={onClickDelete} size={30} style={{ display: 'none' }} cursor="pointer" className="deletarWarn" />
+                </Botoes>
             </Content>
         </Container>
     );
