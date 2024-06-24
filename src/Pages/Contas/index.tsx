@@ -1,16 +1,16 @@
 import { toast } from 'react-toastify';
 import React, { useEffect, useState } from 'react';
-import { ContaContainer, Botoes, Container, Profile, Title } from './styled';
+import { Container, Title, CardAccoutsContainer } from './styled';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose, FaExclamation } from 'react-icons/fa';
-import axios from '../../services/axios';
+import { FaEdit } from 'react-icons/fa';
 import * as actions from '../../store/modules/auth/actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
 import CardAcconts from '../../Components/CardAcconts';
+import API_URL from '../../services/axios';
 
 interface Conta {
     _id: string;
@@ -28,8 +28,8 @@ const Contas: React.FC = () => {
     useEffect(() => {
         async function getContas() {
             try {
-                // setIsLoading(true);
-                const response = await axios.get('/contas');
+                setIsLoading(true);
+                const response = await API_URL.get('/contas');
                 setContas(response.data);
                 setIsLoading(false);
             } catch (e) {
@@ -55,6 +55,7 @@ const Contas: React.FC = () => {
         if (exclamation) {
             exclamation.style.display = 'block';
             e.currentTarget.remove();
+            // bug no elemento html de exclamacao, quando apaga o index da frente ele nao atualiza
         }
     };
 
@@ -62,13 +63,13 @@ const Contas: React.FC = () => {
         e.preventDefault();
         try {
             setIsLoading(true);
-            await axios.delete(`/contas/${id}`);
+            await API_URL.delete(`/contas/${id}`);
             const novasContas = [...contas];
             novasContas.splice(index, 1);
             setContas(novasContas);
+            setIsLoading(false);
 
             toast.success('Conta deletada com sucesso');
-            setIsLoading(false);
         } catch (err) {
             setIsLoading(false);
             const status = get(err, 'response.status', 0) as number;
@@ -88,7 +89,6 @@ const Contas: React.FC = () => {
         }
     };
 
-
     return (
         <Container>
             <Loading isLoading={isLoading} />
@@ -98,32 +98,19 @@ const Contas: React.FC = () => {
                     <FaEdit /> Criar nova Conta
                 </Link>
             </Title>
-            <div className='Card-Acconts-map'>
+            <CardAccoutsContainer>
                 {contas.map((conta, index) => (
-                    <>
-                        <CardAcconts key={index} nome={conta.dono_conta} login={conta.login_conta} senha={conta.senha_conta} />
-                        {/* <Botoes>
-                        <Link className="editar" to={`/conta/${conta._id}/edit`}>
-                            <FaEdit size={30} />
-                        </Link>
-                        <Link className="deletar" onClick={handleDeleteAsk} to={`/contas/${conta._id}/delete`}>
-                            <FaWindowClose size={30} />
-                        </Link>
-                        <FaExclamation
-                            onClick={(e) => handleDelete(e, conta._id, index)}
-                            size={30}
-                            style={{ display: 'none' }}
-                            cursor="pointer"
-                            className="deletarWarn"
-                        />
-                        </Botoes> */}
-                    </>
-            ))}
-
-
-            </div>
-
-
+                    <CardAcconts
+                        key={index}
+                        _id={conta._id}
+                        nomeDoDono={conta.dono_conta}
+                        login={conta.login_conta}
+                        senha={conta.senha_conta}
+                        onClick={handleDeleteAsk}
+                        onClickDelete={(e) => handleDelete(e, conta._id, index)}
+                    />
+                ))}
+            </CardAccoutsContainer>
         </Container>
     );
 };
