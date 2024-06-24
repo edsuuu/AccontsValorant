@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background-color: #d1d1d1;
-    max-width: 1000px;
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,11 +10,6 @@ export const Container = styled.div`
     margin: 110px auto 10px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #000000;
-    .Card-Acconts-map {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-        gap: 20px;
-    }
 `;
 export const Title = styled.div`
     margin: 20px 0px 0px 0px;
@@ -106,4 +101,11 @@ export const Botoes = styled.div`
             color: #ffc400;
         }
     }
+`;
+
+export const CardAccoutsContainer = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
 `;

@@ -34,7 +34,7 @@ const AppRoutes: React.FC = () => {
                     }
                 />
                 <Route
-                    path="/conta/:id/edit"
+                    path="/conta/edit/:id"
                     element={
                         <PrivateRoute isClosed={true}>
                             <CreateAndEditAccount />
