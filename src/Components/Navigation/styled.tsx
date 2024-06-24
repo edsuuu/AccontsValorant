@@ -49,6 +49,7 @@ export const Nav = styled.nav`
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        min-width: 160px;
     }
 
     ul li a:hover {
@@ -94,15 +95,19 @@ export const Lista = styled.ul`
 `;
 
 export const Title = styled.div`
-    /* color: white;
+    color: white;
     display: flex;
     flex-wrap: wrap;
     padding: 2px;
     margin-left: 30px;
     font-size: 0.85rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    display: block;
-    h1 {
-        width: 300px;
-    } */
+
+    a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+            color: #00ffb3;
+        }
+    }
 `;
