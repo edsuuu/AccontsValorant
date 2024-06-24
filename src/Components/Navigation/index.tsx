@@ -10,9 +10,6 @@ import React from 'react';
 
 const Navigation: React.FC = () => {
     const { user, isLoggedIn } = useSelector((state: any) => state.auth);
-    const teste = useSelector((state: any) => console.log(state));
-    console.log(teste);
-
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
