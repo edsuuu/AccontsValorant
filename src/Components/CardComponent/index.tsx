@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from './styled';
-// import ImgCard from '../../assets/img/Img-card1.webp';
 
 const CardComponent: React.FC = () => {
     return (
