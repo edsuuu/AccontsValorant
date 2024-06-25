@@ -27,13 +27,11 @@ export const Container = styled.div`
             sans-serif;
         overflow: hidden;
         position: relative;
-        background-image: url('../../assets/img/Img-card1.webp');
         background-size: cover;
         background-position: center;
     }
 
     .card-content {
-        background-image: url('../../assets/img/Img-card1.webp');
         position: absolute;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
