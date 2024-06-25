@@ -11,6 +11,7 @@ import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
 import CardAcconts from '../../Components/CardAcconts';
 import API_URL from '../../services/axios';
+import CardComponent from '../../Components/CardComponent';
 
 interface Conta {
     _id: string;
@@ -110,6 +111,9 @@ const Contas: React.FC = () => {
                         onClickDelete={(e) => handleDelete(e, conta._id, index)}
                     />
                 ))}
+            </CardAccoutsContainer>
+            <CardAccoutsContainer>
+                <CardComponent/>
             </CardAccoutsContainer>
         </Container>
     );
