@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    border: 2px solid blue;
-    height: 254px;
-    background: rgb(188, 188, 188);
-    box-shadow: 7px 5px 10px rgba(0, 0, 0, 0.333);
-    padding: 20px;
+    height: 250px;
+    background: #b3b3b3;
 `;
 export const Content = styled.div`
     border: 2px solid green;
@@ -19,7 +16,7 @@ export const DadosContas = styled.div`
     flex-direction: column;
 `;
 export const UserIcon = styled.div`
-    background-color: #565656;
+    background-color: #000000;
     transform: translateX(10px) translateY(10px);
     width: 50px;
     height: 50px;
