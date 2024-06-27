@@ -3,16 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
     .card {
         width: 300px;
-        height: 384px;
-        /* background: url('../../assets/img/Img-card1.webp'); */
+        height: 485px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 5px solid black;
+        border: 2px solid;
         border-radius: 20px;
-        --main-color: #000;
+        /* --main-color: #000;
         --submain-color: #78858f;
-        --bg-color: #fff;
+        --bg-color: #fff; */
         font-family:
             system-ui,
             -apple-system,
@@ -27,8 +26,6 @@ export const Container = styled.div`
             sans-serif;
         overflow: hidden;
         position: relative;
-        background-size: cover;
-        background-position: center;
     }
 
     .card-content {
@@ -41,10 +38,40 @@ export const Container = styled.div`
     }
 
     .card__title {
-        margin-top: 60px;
-        font-weight: 500;
-        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 10px;
         color: var(--main-color);
+    }
+
+    .nickName {
+        background-color: #ababab;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    .info-acconts {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        border-radius: 4px;
+        gap: 10px;
+        h3 {
+            padding: 6px;
+            border-radius: 4px;
+        }
+        .input-dados {
+            background-color: #ababab;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            border-radius: 6px;
+            width: 200px;
+            padding: 5px;
+        }
     }
 
     .card__subtitle {
@@ -82,4 +109,18 @@ export const Container = styled.div`
         background: var(--bg-color);
         color: var(--main-color);
     }
+`;
+export const Background = styled.div`
+    width: 100%;
+    img {
+        background-position: left top;
+        width: 300px;
+    }
+`;
+
+export const LinksEdit = styled.div`
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    gap: 10px;
 `;
