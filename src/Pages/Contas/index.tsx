@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
-import CardAcconts from '../../Components/CardAcconts';
+// import CardAcconts from '../../Components/CardAcconts';
 import API_URL from '../../services/axios';
 import CardComponent from '../../Components/CardComponent';
 
@@ -101,10 +101,10 @@ const Contas: React.FC = () => {
             </Title>
             <CardAccoutsContainer>
                 {contas.map((conta, index) => (
-                    <CardAcconts
+                    <CardComponent
                         key={index}
                         _id={conta._id}
-                        nomeDoDono={conta.dono_conta}
+                        nickName={conta.dono_conta}
                         login={conta.login_conta}
                         senha={conta.senha_conta}
                         onClick={handleDeleteAsk}
@@ -112,9 +112,7 @@ const Contas: React.FC = () => {
                     />
                 ))}
             </CardAccoutsContainer>
-            <CardAccoutsContainer>
-                <CardComponent/>
-            </CardAccoutsContainer>
+            <CardAccoutsContainer></CardAccoutsContainer>
         </Container>
     );
 };
