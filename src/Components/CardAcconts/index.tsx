@@ -1,5 +1,5 @@
 import React from 'react';
-import { Botoes, Container, Content, DadosContas, Login, NomeDoDono, Senha, UserIcon } from './styled';
+import { Botoes, Container, Content, DadosContas, Login, NomeDoDono, Senha } from './styled';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaExclamation, FaWindowClose } from 'react-icons/fa';
@@ -21,7 +21,6 @@ const CardAcconts: React.FC<CardAccontsProps> = ({ nomeDoDono, login, senha, _id
     return (
         <Container>
             <Content>
-                <UserIcon></UserIcon>
                 <DadosContas>
                     <NomeDoDono>{nomeDoDono}</NomeDoDono>
                     <Login>
