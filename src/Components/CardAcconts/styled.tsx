@@ -58,7 +58,7 @@ export const Botoes = styled.div`
     .deletarWarn {
         transition: 0.3s;
         &:hover {
-            color: #ffc400;
+            color: #8c7118;
         }
     }
 `;
