@@ -45,7 +45,7 @@ export const Nav = styled.nav`
 
     ul li a {
         display: block;
-        color: #333;
+        color: #212121;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
