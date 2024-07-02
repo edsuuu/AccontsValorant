@@ -112,7 +112,6 @@ const Contas: React.FC = () => {
                     />
                 ))}
             </CardAccoutsContainer>
-            <CardAccoutsContainer></CardAccoutsContainer>
         </Container>
     );
 };

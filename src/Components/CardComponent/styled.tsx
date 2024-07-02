@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     .card {
-        width: 300px;
+        width: 100%;
+        /* width: 300px; */
         height: 485px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 2px solid;
-        border-radius: 20px;
+        border: 1px solid;
+        border-radius: 10px;
         /* --main-color: #000;
         --submain-color: #78858f;
         --bg-color: #fff; */
@@ -111,10 +112,12 @@ export const Container = styled.div`
     }
 `;
 export const Background = styled.div`
-    width: 100%;
+    width: 300px;
+    margin: auto;
     img {
         background-position: left top;
         width: 300px;
+        margin: auto;
     }
 `;
 

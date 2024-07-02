@@ -30,6 +30,7 @@ const CreateAndEditAccount: React.FC = () => {
                 setIsLoading(true);
                 //pesquisar um usuario
                 const { data } = await axios.get(`/contas/${id}`);
+                console.log(data);
                 setDonoConta(data.dono_conta);
                 setLoginConta(data.login_conta);
                 setSenhaConta(data.senha_conta);
@@ -121,17 +122,17 @@ const CreateAndEditAccount: React.FC = () => {
                 <Title>{id ? 'Editar Conta' : 'Nova Conta'}</Title>
 
                 <label htmlFor="dono_conta">
-                    Dono da conta
+                    NickName
                     <input type="text" value={dono_conta} onChange={(e) => setDonoConta(e.target.value)} placeholder="Dono da conta" />
                 </label>
 
                 <label htmlFor="login_conta">
-                    login da conta
+                    Login
                     <input type="text" value={login_conta} onChange={(e) => setLoginConta(e.target.value)} placeholder="Login da conta" />
                 </label>
 
                 <label htmlFor="senha_conta">
-                    senha da conta
+                    Senha
                     <input type="text" value={senha_conta} onChange={(e) => setSenhaConta(e.target.value)} placeholder="Senha da conta" />
                 </label>
 

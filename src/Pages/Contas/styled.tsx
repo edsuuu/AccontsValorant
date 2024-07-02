@@ -105,7 +105,8 @@ export const Botoes = styled.div`
 
 export const CardAccoutsContainer = styled.div`
     width: 100%;
+    padding: 50px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 `;

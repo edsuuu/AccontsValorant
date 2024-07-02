@@ -15,8 +15,8 @@ interface LocationState {
 
 const PrivateRoute: React.FC<MyRouteProps> = ({ children, isClosed = false, requiredPermission }) => {
     const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
-    const state = useSelector((state: any) => state.auth);
-    console.log(state);
+    // const state = useSelector((state: any) => state.auth);
+    // console.log(state);
 
     const userPermission = useSelector((state: any) => state.auth.user.permission);
 
