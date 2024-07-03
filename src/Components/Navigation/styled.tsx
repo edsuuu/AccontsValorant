@@ -1,41 +1,17 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #5365a1;
-    box-shadow: 0px 2px 4px rgb(15, 4, 4);
-
-    width: 100%;
-
-    a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        transition: 0.3s;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    a:hover {
-        color: #00ffb3;
-    } */
-
+    background-color: #11111a;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2.5px solid rgba(255, 255, 255, 0.15);
     display: flex;
-    border: 1px solid black;
     justify-content: center;
     gap: 30px;
     align-items: center;
 
-    /* Basic styling for navigation */
     ul {
         list-style-type: none;
-        background-color: #9e9e9e;
         overflow: hidden;
     }
 
@@ -45,7 +21,7 @@ export const Nav = styled.nav`
 
     ul li a {
         display: block;
-        color: #212121;
+        color: aliceblue;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -60,7 +36,6 @@ export const Nav = styled.nav`
     ul li ul {
         display: none;
         position: absolute;
-        background-color: #f9f9f9;
         min-width: 160px;
         z-index: 1;
     }
