@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-color: #d1d1d1;
+    background-color: #11111a;
     max-width: 1400px;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,6 @@ export const Container = styled.div`
     align-items: center;
     margin: 110px auto 10px auto;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px #000000;
 `;
 export const Title = styled.div`
     margin: 20px 0px 0px 0px;
@@ -20,8 +19,9 @@ export const Title = styled.div`
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #0000003e;
+    color: #ffffff;
     a {
-        color: #0011ff;
+        color: #ffffff;
         font-size: 1.3rem;
         text-decoration: none;
         display: flex;
@@ -72,7 +72,7 @@ export const Botoes = styled.div`
     justify-content: center;
     gap: 20px;
     a {
-        color: #000;
+        color: #ffffff;
     }
     .perfil {
         transition: 0.3s;
@@ -85,7 +85,7 @@ export const Botoes = styled.div`
     .editar {
         transition: 0.3s;
         &:hover {
-            color: #00d1d8;
+            color: #ffffff;
         }
     }
 
