@@ -20,6 +20,8 @@ export const Nav = styled.nav`
     }
 
     ul li a {
+        background-color: #11111a;
+
         display: block;
         color: aliceblue;
         text-align: center;

@@ -10,7 +10,8 @@ export const GlobalStyled = createGlobalStyle`
 
 
 body {
-background-color: #5a5a5a;
+    background-color: #11111a;
+
 
 .Toastify {
     font-family: 'Roboto', sans-serif;
