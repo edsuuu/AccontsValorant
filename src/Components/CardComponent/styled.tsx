@@ -4,11 +4,11 @@ export const Container = styled.div`
     .card {
         width: 100%;
         /* width: 300px; */
-        height: 485px;
+        height: 500px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 1px solid;
+        border: 2px solid white;
         border-radius: 10px;
         /* --main-color: #000;
         --submain-color: #78858f;
@@ -31,7 +31,6 @@ export const Container = styled.div`
 
     .card-content {
         position: absolute;
-        bottom: 0;
         background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
         color: white;
         width: 100%;
@@ -41,6 +40,7 @@ export const Container = styled.div`
     .card__title {
         display: flex;
         flex-direction: column;
+        text-align: center;
         gap: 10px;
         margin-top: 20px;
         font-weight: 600;
@@ -49,7 +49,7 @@ export const Container = styled.div`
     }
 
     .nickName {
-        background-color: #ababab;
+        background-color: #ffffff;
         padding: 8px;
         border-radius: 4px;
     }
@@ -65,7 +65,7 @@ export const Container = styled.div`
             border-radius: 4px;
         }
         .input-dados {
-            background-color: #ababab;
+            background-color: #ffffff;
             display: flex;
             justify-content: space-between;
             flex-direction: row;
@@ -83,7 +83,7 @@ export const Container = styled.div`
     }
 
     .card__btn {
-        margin-top: 15px;
+        /* margin-top: 15px;
         width: 76px;
         height: 31px;
         border: 2px solid var(--main-color);
@@ -93,7 +93,7 @@ export const Container = styled.div`
         color: var(--main-color);
         background: var(--bg-color);
         text-transform: uppercase;
-        transition: all 0.3s;
+        transition: all 0.3s; */
     }
 
     .card__btn-solid {
@@ -110,13 +110,20 @@ export const Container = styled.div`
         background: var(--bg-color);
         color: var(--main-color);
     }
+
+    button {
+        background-color: green;
+        padding: 5px;
+        font-size: 12px;
+        font-weight: 800;
+    }
 `;
 export const Background = styled.div`
     width: 300px;
     margin: auto;
     img {
         background-position: left top;
-        width: 300px;
+        width: 320px;
         margin: auto;
     }
 `;
