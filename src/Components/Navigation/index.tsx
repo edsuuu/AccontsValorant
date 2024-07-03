@@ -76,7 +76,7 @@ const Navigation: React.FC = () => {
                 {isLoggedIn && (
                     <h2>
                         <Link to={''} onClick={handleLogout}>
-                            Sair da sua Conta
+                            Sair da Conta
                         </Link>
                     </h2>
                 )}
