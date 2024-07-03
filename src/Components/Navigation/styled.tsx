@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-    background-color: #11111a;
+    background-color: transparent;
     backdrop-filter: blur(30px);
     box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
     border: 2.5px solid rgba(255, 255, 255, 0.15);
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
     align-items: center;
 
     ul {
@@ -17,11 +16,11 @@ export const Nav = styled.nav`
 
     ul li {
         float: left;
+        margin: 10px;
     }
 
     ul li a {
-        background-color: #11111a;
-
+        background-color: transparent;
         display: block;
         color: aliceblue;
         text-align: center;
@@ -31,7 +30,7 @@ export const Nav = styled.nav`
     }
 
     ul li a:hover {
-        background-color: #ddd;
+        background-color: #11111a;
     }
 
     /* Dropdown menu */
@@ -51,11 +50,14 @@ export const Nav = styled.nav`
     }
 
     ul li ul li a {
-        padding: 12px 16px;
+        /* padding: 12px 16px; */
     }
 
     ul li ul li a:hover {
-        background-color: #ddd;
+        background-color: #11111a;
+        backdrop-filter: blur(30px);
+        box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.15);
     }
 `;
 
@@ -76,7 +78,7 @@ export const Title = styled.div`
     display: flex;
     flex-wrap: wrap;
     padding: 2px;
-    margin-left: 30px;
+    margin: 0px 25px 0px 25px;
     font-size: 0.85rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
