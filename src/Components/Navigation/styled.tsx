@@ -7,6 +7,7 @@ export const Nav = styled.nav`
     background-color: rgb(26, 36, 46);
     border-bottom: 1px solid #ffffff85;
     font-family: 'ValorantFont', sans-serif;
+    font-size: 1.12rem;
 
     ul {
         list-style-type: none;
@@ -25,9 +26,11 @@ export const Nav = styled.nav`
         padding: 16px 16px;
         text-decoration: none;
         min-width: 160px;
+        transition: 0.3s;
     }
 
     ul li a:hover {
+        color: #ff4655;
         background-color: #11111a;
         border: none;
     }
@@ -69,8 +72,10 @@ export const Title = styled.div`
     a {
         text-decoration: none;
         color: white;
+        transition: 0.3s;
+
         &:hover {
-            color: #00ffb3;
+            color: #ff4655;
         }
     }
 `;

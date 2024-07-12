@@ -6,6 +6,11 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #fff;
+
+    a {
+        font-size: 1.6rem;
+    }
 `;
 
 export const Conteudo = styled.div`
@@ -15,10 +20,21 @@ export const Conteudo = styled.div`
     justify-content: center;
     margin-top: 20px;
     gap: 20px;
-    img {
-        box-shadow: 0px 0px 10px #0000008d;
-        border-radius: 20px;
-        width: 400px;
-        height: 400px;
+    h1:nth-child(1) {
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+    h1:nth-child(2) {
+        font-size: 1.7rem;
+
+        font-family: 'ValorantFont', sans-serif;
+    }
+    a {
+        font-family: 'ValorantFont', sans-serif;
+
+        color: white;
+        &:hover {
+            color: #ff4655;
+        }
     }
 `;
