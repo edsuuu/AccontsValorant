@@ -13,6 +13,7 @@ export const Container = styled.div`
     font-size: 3rem;
     color: #fff;
     font-weight: bold;
+    font-family: 'ValorantFont', sans-serif;
 
     div {
         position: absolute;
