@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import Loading from '../../Components/Loading';
-// import CardAcconts from '../../Components/CardAcconts';
 import API_URL from '../../services/axios';
 import CardComponent from '../../Components/CardComponent';
 
@@ -99,6 +98,7 @@ const Contas: React.FC = () => {
                     <FaEdit /> Criar nova Conta
                 </Link>
             </Title>
+
             <CardAccoutsContainer>
                 {contas.map((conta, index) => (
                     <CardComponent

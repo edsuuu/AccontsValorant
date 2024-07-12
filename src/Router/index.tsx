@@ -11,10 +11,8 @@ import Unauthorized from '../Pages/Unauthorized';
 import EditAndDeleteProfile from '../Pages/Profile/EditAndDeleteProfile';
 import Pagina404 from '../Pages/NotFoundPage';
 import React from 'react';
-import LogsTable from '../Pages/Admin/Logs';
 import EditUser from '../Pages/Admin/EditUser';
 import RegisterUser from '../Pages/Admin/RegisterUser';
-import Dashboard from '../Pages/Admin/Dashboard';
 import AllUser from '../Pages/Admin/AllUsers';
 
 const AppRoutes: React.FC = () => {
@@ -73,14 +71,7 @@ const AppRoutes: React.FC = () => {
                         </PrivateRoute>
                     }
                 />
-                <Route
-                    path="/admin/logs"
-                    element={
-                        <PrivateRoute isClosed={true} requiredPermission="admin">
-                            <LogsTable />
-                        </PrivateRoute>
-                    }
-                />
+
                 <Route
                     path="/admin/user/register"
                     element={
@@ -97,14 +88,7 @@ const AppRoutes: React.FC = () => {
                         </PrivateRoute>
                     }
                 />
-                <Route
-                    path="/admin/dashboard"
-                    element={
-                        <PrivateRoute isClosed={true} requiredPermission="admin">
-                            <Dashboard />
-                        </PrivateRoute>
-                    }
-                />
+
                 <Route
                     path="/admin/users"
                     element={
