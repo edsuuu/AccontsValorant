@@ -65,9 +65,6 @@ const Navigation: React.FC = () => {
                             <li>
                                 <Link to={'/admin/users'}>Listar Users</Link>
                             </li>
-                            <li>
-                                <Link to={'/admin/logs'}>Logs</Link>
-                            </li>
                         </ul>
                     </li>
                 )}
@@ -76,7 +73,7 @@ const Navigation: React.FC = () => {
                 {isLoggedIn && (
                     <h2>
                         <Link to={''} onClick={handleLogout}>
-                            Sair da Conta
+                            Loggout
                         </Link>
                     </h2>
                 )}

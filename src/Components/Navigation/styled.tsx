@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-    background-color: transparent;
-    backdrop-filter: blur(30px);
-    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
-    border: 2.5px solid rgba(255, 255, 255, 0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(26, 36, 46);
+    border-bottom: 1px solid #ffffff85;
+    font-family: 'ValorantFont', sans-serif;
 
     ul {
         list-style-type: none;
@@ -16,21 +15,21 @@ export const Nav = styled.nav`
 
     ul li {
         float: left;
-        margin: 10px;
     }
 
     ul li a {
-        background-color: transparent;
+        background-color: rgb(26, 36, 46);
         display: block;
         color: aliceblue;
         text-align: center;
-        padding: 14px 16px;
+        padding: 16px 16px;
         text-decoration: none;
         min-width: 160px;
     }
 
     ul li a:hover {
         background-color: #11111a;
+        border: none;
     }
 
     /* Dropdown menu */
@@ -43,35 +42,19 @@ export const Nav = styled.nav`
 
     ul li:hover ul {
         display: block;
+        border: 1px solid #fff;
     }
 
     ul li ul li {
         float: none;
     }
 
-    ul li ul li a {
-        /* padding: 12px 16px; */
-    }
-
     ul li ul li a:hover {
         background-color: #11111a;
-        backdrop-filter: blur(30px);
-        box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
-        border: 1px solid rgba(255, 255, 255, 0.15);
     }
 `;
 
-export const Lista = styled.ul`
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 20px;
-    list-style: none; */
-`;
+export const Lista = styled.ul``;
 
 export const Title = styled.div`
     color: white;
@@ -80,7 +63,8 @@ export const Title = styled.div`
     padding: 2px;
     margin: 0px 25px 0px 25px;
     font-size: 0.85rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'ValorantFont', sans-serif;
 
     a {
         text-decoration: none;

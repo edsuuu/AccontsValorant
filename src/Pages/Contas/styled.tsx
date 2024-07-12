@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-color: #11111a;
+    background-color: #ece8e3;
     max-width: 1400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 110px auto 10px auto;
+    margin: 3rem auto 10px auto;
     border-radius: 10px;
 `;
 export const Title = styled.div`
@@ -19,9 +19,11 @@ export const Title = styled.div`
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #0000003e;
-    color: #ffffff;
+    color: rgb(26, 36, 46);
+    font-family: 'ValorantFont', sans-serif;
+
     a {
-        color: #ffffff;
+        color: rgb(26, 36, 46);
         font-size: 1.3rem;
         text-decoration: none;
         display: flex;
