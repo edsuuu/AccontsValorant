@@ -14,9 +14,10 @@ import { AppDispatch } from '../../../store';
 const EditAndDeleteProfile: React.FC = () => {
     const user = useSelector((state: RootState) => state.auth.token);
     const id = useSelector((state: RootState) => state.auth.user.id);
-    const nomeStorage = useSelector((state: RootState) => state.auth.user.name);
+    const nomeStorage = useSelector((state: RootState) => state.auth.user.nome);
     const loginStorage = useSelector((state: RootState) => state.auth.user.login);
     const emailStorage = useSelector((state: RootState) => state.auth.user.email);
+
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
@@ -27,11 +28,15 @@ const EditAndDeleteProfile: React.FC = () => {
     const [dialogOpen, setDialogOpen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const usertst = useSelector((state: RootState) => state.auth);
+    console.log(usertst);
+
     useEffect(() => {
         if (!id) {
             dispatch(actions.loginFailure({ error: 'Você não está logado' }));
             navigate('/login');
-            return toast.error('Você não está logado');
+            toast.error('Você não está logado');
+            return;
         }
 
         if (nomeStorage && emailStorage && loginStorage) {
@@ -39,6 +44,7 @@ const EditAndDeleteProfile: React.FC = () => {
             setEmail(emailStorage);
             setLogin(loginStorage);
         }
+        return;
     }, [id, emailStorage, nomeStorage, loginStorage, navigate, dispatch]);
 
     function handleSubmit(e: FormEvent) {
@@ -68,7 +74,10 @@ const EditAndDeleteProfile: React.FC = () => {
 
         if (formErrors) return;
 
-        dispatch(actions.updateRequest({ nome, email, password, _id }));
+        const payload = { nome, email, password };
+
+        console.log(payload);
+        dispatch(actions.updateRequest({ id, nome, login, email, password }));
     }
 
     const abrirDialog = () => {

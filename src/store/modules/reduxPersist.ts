@@ -6,7 +6,13 @@ import { Reducer } from 'redux';
 interface AuthState {
     isLoggedIn: boolean;
     token: string | null;
-    user: any;
+    user: {
+        id: string | null;
+        nome: string | null;
+        login: string | null;
+        email: string | null;
+        permission: string | null;
+    };
     isLoading: boolean;
 }
 

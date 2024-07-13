@@ -12,15 +12,11 @@ const Profile: React.FC = () => {
         <Container>
             <h1>Seu perfil</h1>
             <Informacoes>
-                <label htmlFor="name">
-                    <input type="text" name="name" id="name" value={user.nome} />
-                </label>
-                <label htmlFor="email">
-                    <input type="text" name="email" id="email" value={user.email} />
-                </label>
-                <label htmlFor="login">
-                    <input type="text" name="login" id="login" value={user.login} />
-                </label>
+                <h1>{user.nome}</h1>
+
+                <h1>{user.email}</h1>
+
+                <h1>{user.login}</h1>
             </Informacoes>
 
             <h1>
