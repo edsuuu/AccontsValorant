@@ -2,7 +2,7 @@
 import { AnyAction } from 'redux';
 import * as types from '../types';
 
-interface User {
+export interface User {
     id?: string;
     nome?: string;
     email?: string;
@@ -10,13 +10,17 @@ interface User {
     permission?: string;
 }
 
-interface AuthState {
+export interface AuthState {
     isLoggedIn: boolean;
     token: string | null;
-    user: User;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    user: any;
     isLoading: boolean;
 }
 
+export interface RootState {
+    auth: AuthState;
+}
 const initialState: AuthState = {
     isLoggedIn: false,
     token: null,

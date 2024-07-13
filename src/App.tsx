@@ -10,7 +10,6 @@ import store, { persistor } from './store';
 import { GlobalStyled } from './styles/GlobalStyled';
 import React from 'react';
 
-
 const App: React.FC = () => {
     return (
         <Provider store={store}>
