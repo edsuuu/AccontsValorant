@@ -4,7 +4,7 @@ import * as types from '../types';
 
 interface User {
     id?: string;
-    name?: string;
+    nome?: string;
     email?: string;
     login?: string;
     permission?: string;

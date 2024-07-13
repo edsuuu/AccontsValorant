@@ -11,6 +11,7 @@ interface LoginSuccessPayload {
     user: {
         id: string;
         name: string;
+        login: string;
         email: string;
         permission: string;
     };
@@ -21,8 +22,9 @@ interface LoginFailurePayload {
 }
 
 interface UpdateRequestPayload {
-    id: string;
+    id: string | undefined;
     nome: string;
+    login: string;
     email: string;
     password?: string;
 }
