@@ -26,7 +26,7 @@ const Login: React.FC = () => {
         e.preventDefault();
         let formErrors = false;
 
-        if (login.length < 3 || login.length > 10) {
+        if (login.length < 3 || login.length > 20) {
             formErrors = true;
             toast.error('Login inválido');
         }
