@@ -9,6 +9,15 @@ export const Container = styled.div`
     align-items: center;
     margin: 3rem auto 10px auto;
     border-radius: 10px;
+
+    .input-pequisa {
+        margin-top: 2rem;
+        border: 1px solid black;
+        width: 500px;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2rem;
+    }
 `;
 export const Title = styled.div`
     margin: 20px 0px 0px 0px;
