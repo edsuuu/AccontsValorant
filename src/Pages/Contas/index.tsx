@@ -23,6 +23,7 @@ const Contas: React.FC = () => {
     const [contas, setContas] = useState<Conta[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState<string>('');
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
@@ -89,6 +90,12 @@ const Contas: React.FC = () => {
         }
     };
 
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredContas = contas.filter((conta) => conta.dono_conta.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
         <Container>
             <Loading isLoading={isLoading} />
@@ -98,9 +105,9 @@ const Contas: React.FC = () => {
                     <FaEdit /> Criar nova Conta
                 </Link>
             </Title>
-
+            <input className="input-pequisa" type="text" placeholder="Pesquisar por nickname" value={searchTerm} onChange={handleSearchChange} />
             <CardAccoutsContainer>
-                {contas.map((conta, index) => (
+                {filteredContas.map((conta, index) => (
                     <CardComponent
                         key={index}
                         _id={conta._id}
