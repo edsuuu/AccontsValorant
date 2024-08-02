@@ -50,13 +50,13 @@ const CardComponent: React.FC<CardComponentProps> = ({ nickName, login, senha, _
                 </div>
 
                 <div className="input-dados">
-                    <p>{login}</p>
+                    <p>Login </p>
                     <button onClick={() => copyToClipboard(login, 'Login', setCopiedLogin)}>
                         {copiedLogin ? <FaClipboardCheck size={22} /> : <FaClipboard size={22} />}
                     </button>
                 </div>
                 <div className="input-dados">
-                    <p>{senha}</p>
+                    <p>Senha</p>
                     <button onClick={() => copyToClipboard(senha, 'Senha', setCopiedSenha)}>
                         {copiedSenha ? <FaClipboardCheck size={22} /> : <FaClipboard size={22} />}
                     </button>
